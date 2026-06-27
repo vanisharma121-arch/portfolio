@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Secrets / credentials
+.env
+credentials.json
+token.json
+
+# OS
+.DS_Store
+
+# Claude local settings
+.claude/settings.local.json
+
+# Temp / generated
+.tmp/
+screenshot_*.png

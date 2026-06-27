@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills — Vani Sharma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a class="nav-logo" href="index.html">VS</a>
+  <ul>
+    <li><a href="how-i-work.html">How I Work</a></li>
+    <li><a href="skills.html" class="active">Skills</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="https://drive.google.com/uc?export=download&id=18B5BgZaSjQqWibnNJdiR_EA4RLJdG5RS" target="_blank" rel="noopener">↓ Download CV</a>
+</nav>
+
+<main class="subpage">
+  <div class="subpage-back-wrap">
+    <a class="back-home" href="index.html">← Back to home</a>
+  </div>
+
+  <!-- ─── SKILLS ─── -->
+  <section id="skills">
+    <div class="skills-wrap">
+
+      <div class="section-eyebrow reveal">My Skills</div>
+      <h2 class="section-title reveal">Built for both<br>science &amp; story.</h2>
+      <p class="section-sub reveal">A rare mix of laboratory expertise, digital marketing know-how, and software proficiency.</p>
+
+      <div class="skills-grid">
+
+        <!-- Left: stats card -->
+        <div class="stats-card reveal">
+          <div style="display:flex; align-items:center; gap:14px;">
+            <div class="stats-mini-photo">
+              <img src="brand_asset/photo.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="mp-ph" style="display:none;">👩‍🔬</div>
+            </div>
+            <div>
+              <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem;">Vani Sharma</div>
+              <div style="font-size:0.78rem; color:var(--text-dim);">MS Biotechnology · Boston</div>
+            </div>
+          </div>
+
+          <div class="stats-numbers">
+            <div class="stat-block t1">
+              <div class="s-num">6+</div>
+              <div class="s-lbl">Internships &amp; roles</div>
+            </div>
+            <div class="stat-block t2">
+              <div class="s-num">3</div>
+              <div class="s-lbl">Countries of experience</div>
+            </div>
+          </div>
+
+          <p class="stats-blurb">
+            From research labs in India to consumer-trial work in Mumbai to graduate study in Boston — bringing global perspective to every project.
+          </p>
+        </div>
+
+        <!-- Right: tool cards -->
+        <div class="tools-row">
+
+          <div class="tool-card purple reveal">
+            <div class="tc-icon">🧬</div>
+            <div>
+              <div class="tc-name">BioPython</div>
+              <div class="tc-meta">2 yrs · daily use</div>
+            </div>
+            <span class="tc-bg-emoji">🧬</span>
+          </div>
+
+          <div class="tool-card gold reveal">
+            <div class="tc-icon">📊</div>
+            <div>
+              <div class="tc-name">R / Statistics</div>
+              <div class="tc-meta">3 yrs · daily use</div>
+            </div>
+            <span class="tc-bg-emoji">📊</span>
+          </div>
+
+          <div class="tool-card pink reveal">
+            <div class="tc-icon">🎨</div>
+            <div>
+              <div class="tc-name">Canva</div>
+              <div class="tc-meta">4 yrs · daily use</div>
+            </div>
+            <span class="tc-bg-emoji">🎨</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Domain skill chips -->
+      <div class="domain-skills reveal">
+        <h4>Domain Skills</h4>
+        <div class="domain-chips">
+          <span class="domain-chip r">Gene Therapy</span>
+          <span class="domain-chip r">Cell Culture</span>
+          <span class="domain-chip r">PCR / qPCR</span>
+          <span class="domain-chip r">Western Blotting</span>
+          <span class="domain-chip r">Gel Electrophoresis</span>
+          <span class="domain-chip r">HPLC</span>
+          <span class="domain-chip r">Clinical Research</span>
+          <span class="domain-chip b">Social Media Strategy</span>
+          <span class="domain-chip b">Content Creation</span>
+          <span class="domain-chip b">Branding &amp; PR</span>
+          <span class="domain-chip b">Marketing Collateral</span>
+          <span class="domain-chip b">Community Insights</span>
+          <span class="domain-chip g">PMO Support</span>
+          <span class="domain-chip g">Cross-Functional Collab</span>
+          <span class="domain-chip g">Data-Driven Decisions</span>
+          <span class="domain-chip g">Timeline Management</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <a class="f-logo" href="index.html">VS</a>
+  <span>© 2025 Vani Sharma · Boston, MA</span>
+  <span>sharma.vani1@northeastern.edu · +1 (857) 396-8591</span>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+    obs.observe(el);
+  });
+
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.background = window.scrollY > 30 ? 'rgba(14,15,20,0.97)' : 'rgba(14,15,20,0.85)';
+  });
+</script>
+</body>
+</html>
