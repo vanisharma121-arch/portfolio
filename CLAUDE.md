@@ -1,73 +1,79 @@
-# Agent Instructions
+# Vani Sharma — portfolio
 
-You're working inside the **WAT framework** (Workflows, Agents, Tools). This architecture separates concerns so that probabilistic AI handles reasoning while deterministic code handles execution. That separation is what makes this system reliable.
+Personal portfolio site. Deployed to GitHub Pages at
+**https://vanisharma121-arch.github.io/portfolio/**
 
-## The WAT Architecture
+## The site lives in `react/`
 
-**Layer 1: Workflows (The Instructions)**
-- Markdown SOPs stored in `workflows/`
-- Each workflow defines the objective, required inputs, which tools to use, expected outputs, and how to handle edge cases
-- Written in plain language, the same way you'd brief someone on your team
+`react/` is the real site — a Vite + React 18 single-page app. Work there.
 
-**Layer 2: Agents (The Decision-Maker)**
-- This is your role. You're responsible for intelligent coordination.
-- Read the relevant workflow, run tools in the correct sequence, handle failures gracefully, and ask clarifying questions when needed
-- You connect intent to execution without trying to do everything yourself
-- Example: If you need to pull data from a website, don't attempt it directly. Read `workflows/scrape_website.md`, figure out the required inputs, then execute `tools/scrape_single_site.py`
-
-**Layer 3: Tools (The Execution)**
-- Python scripts in `tools/` that do the actual work
-- API calls, data transformations, file operations, database queries
-- Credentials and API keys are stored in `.env`
-- These scripts are consistent, testable, and fast
-
-**Why this matters:** When AI tries to handle every step directly, accuracy drops fast. If each step is 90% accurate, you're down to 59% success after just five steps. By offloading execution to deterministic scripts, you stay focused on orchestration and decision-making where you excel.
-
-## How to Operate
-
-**1. Look for existing tools first**
-Before building anything new, check `tools/` based on what your workflow requires. Only create new scripts when nothing exists for that task.
-
-**2. Learn and adapt when things fail**
-When you hit an error:
-- Read the full error message and trace
-- Fix the script and retest (if it uses paid API calls or credits, check with me before running again)
-- Document what you learned in the workflow (rate limits, timing quirks, unexpected behavior)
-- Example: You get rate-limited on an API, so you dig into the docs, discover a batch endpoint, refactor the tool to use it, verify it works, then update the workflow so this never happens again
-
-**3. Keep workflows current**
-Workflows should evolve as you learn. When you find better methods, discover constraints, or encounter recurring issues, update the workflow. That said, don't create or overwrite workflows without asking unless I explicitly tell you to. These are your instructions and need to be preserved and refined, not tossed after one use.
-
-## The Self-Improvement Loop
-
-Every failure is a chance to make the system stronger:
-1. Identify what broke
-2. Fix the tool
-3. Verify the fix works
-4. Update the workflow with the new approach
-5. Move on with a more robust system
-
-This loop is how the framework improves over time.
-
-## File Structure
-
-**What goes where:**
-- **Deliverables**: Final outputs go to cloud services (Google Sheets, Slides, etc.) where I can access them directly
-- **Intermediates**: Temporary processing files that can be regenerated
-
-**Directory layout:**
-```
-.tmp/           # Temporary files (scraped data, intermediate exports). Regenerated as needed.
-tools/          # Python scripts for deterministic execution
-workflows/      # Markdown SOPs defining what to do and how
-.env            # API keys and environment variables (NEVER store secrets anywhere else)
-credentials.json, token.json  # Google OAuth (gitignored)
+```bash
+cd react
+npm install
+npm run dev       # http://localhost:5173
+npm run build     # production build → react/dist
+npm run preview   # serve the production build
 ```
 
-**Core principle:** Local files are just for processing. Anything I need to see or use lives in cloud services. Everything in `.tmp/` is disposable.
+### Structure
 
-## Bottom Line
+```
+react/
+  index.html            # document head: title, meta, OG tags, favicon
+  vite.config.js        # base = '/portfolio/' on build (Pages project site), '/' in dev
+  public/               # copied verbatim into the build root
+    photo.jpg           # portrait used in the resume section
+    Vani_Sharma_CV.pdf  # target of every "Download CV" button
+  src/
+    main.jsx            # entry; wraps <App> in <GameProvider>
+    App.jsx             # composes the page sections
+    index.css           # the whole design system (no CSS framework)
+    data.js             # ALL copy and content — edit here, not in components
+    game/
+      GameContext.jsx   # XP + achievement state, persisted to localStorage
+      HUD.jsx           # level ring, XP readout, trophy tray
+      Toasts.jsx        # "achievement unlocked" toasts
+    hooks/
+      useScrollEffects.js  # scroll reveal, count-up, section-reached, Konami
+    components/         # one file per section, all presentational
+```
 
-You sit between what I want (workflows) and what actually gets done (tools). Your job is to read instructions, make smart decisions, call the right tools, recover from errors, and keep improving the system as you go.
+## Conventions that matter
 
-Stay pragmatic. Stay reliable. Keep learning.
+**Content goes in `src/data.js`.** Components are presentational and read from it.
+To change copy, projects, experience, or achievements, edit that file only.
+
+**Public assets need the base path.** Because the site is served from
+`/portfolio/`, never hardcode `/photo.jpg`. Use the `asset()` helper pattern:
+
+```js
+const asset = (file) => `${import.meta.env.BASE_URL}${file}`
+```
+
+**Design language is Apple-inspired.** System font stack (SF Pro on Apple
+devices, Inter elsewhere), large tight-tracked headlines, alternating
+light/gray/dark full-bleed sections, a dark translucent fixed nav, and pill
+buttons. Section colors come from CSS custom properties that `.section--dark`
+and `.section--gray` override — style against `var(--fg)` / `var(--bg)` /
+`var(--line)` / `var(--card)` rather than hardcoding colors, so components work
+on any section background.
+
+**Gamification rewards exploring the site, not rating Vani.** Achievements fire
+for reaching sections, opening projects, downloading the CV, and one Konami
+easter egg. Every *number* the site displays (45%, 75%, 57%) is a real figure
+from her CV — never invent proficiency scores or metrics.
+
+**Respect `prefers-reduced-motion`.** Reveals and count-ups check it and jump
+straight to the final state.
+
+## Deployment
+
+`.github/workflows/deploy.yml` builds `react/` and publishes `react/dist` on
+every push to `main`. The Pages source must be set to **GitHub Actions** in the
+repository settings for it to work.
+
+## The old static site
+
+The original hand-written static site (`index.html`, `experience.html`,
+`skills.html`, `how-i-work.html`, `styles.css` at the repo root) predates the
+React app and is no longer deployed. It is kept only for reference.

@@ -1,33 +1,63 @@
+import { useState } from 'react'
 import { projects } from '../data'
+import { useGame } from '../game/GameContext'
 
 export default function Projects() {
-  return (
-    <section id="projects">
-      <div className="section-head-center">
-        <div className="section-eyebrow reveal">Portfolio</div>
-        <h2 className="section-title reveal">My Latest Projects</h2>
-        <p className="section-sub reveal">
-          A snapshot of the most meaningful research and marketing work I've shipped.
-        </p>
-      </div>
+  const { unlock } = useGame()
+  const [opened, setOpened] = useState([])
 
-      <div className="proj-grid">
-        {projects.map((project) => (
-          <div className={`proj-card ${project.color} reveal`} key={project.num}>
-            <span className="proj-big">{project.emoji}</span>
-            <span className="proj-deco">↗</span>
-            <div className="proj-num">{project.num}</div>
-            <h3 className="proj-name">{project.name}</h3>
-            <p className="proj-sub">{project.sub}</p>
-            <div className="proj-tags">
-              {project.tags.map((tag) => (
-                <span className="proj-tag" key={tag}>
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
+  const toggle = (num) => {
+    setOpened((prev) => {
+      if (prev.includes(num)) return prev.filter((n) => n !== num)
+
+      const next = [...prev, num]
+      unlock('work')
+      if (next.length === projects.length) unlock('allwork')
+      return next
+    })
+  }
+
+  return (
+    <section className="section section--dark" id="work">
+      <div className="shell">
+        <p className="eyebrow reveal">Selected work</p>
+        <h2 className="h2 reveal">Four projects worth opening.</h2>
+        <p className="lede reveal" style={{ marginBottom: 46 }}>
+          Tap any card to read what actually happened.
+        </p>
+
+        <div className="grid grid--2">
+          {projects.map((p) => {
+            const isOpen = opened.includes(p.num)
+            return (
+              <button
+                key={p.num}
+                className={`project reveal${isOpen ? ' is-open' : ''}`}
+                onClick={() => toggle(p.num)}
+                aria-expanded={isOpen}
+              >
+                <div className="project__top">
+                  <span className="project__num">{p.num}</span>
+                  <span className="project__open" aria-hidden="true">+</span>
+                </div>
+
+                <div className="project__name">{p.name}</div>
+                <p className="project__sub">{p.sub}</p>
+
+                <div className="project__detail">
+                  <div>
+                    <p>{p.detail}</p>
+                    <div className="project__tags">
+                      {p.tags.map((t) => (
+                        <span className="tag" key={t}>{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </button>
+            )
+          })}
+        </div>
       </div>
     </section>
   )

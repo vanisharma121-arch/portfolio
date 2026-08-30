@@ -1,38 +1,54 @@
-# Vani Sharma — Portfolio (React)
+# Vani Sharma — Portfolio
 
-The portfolio rebuilt as a Vite + React app. This is a 1:1 port of the original
-single-file `../index.html`, split into idiomatic components with the repeated
-content (experience, projects, skills, etc.) moved into `src/data.js`.
+Vite + React 18 single-page portfolio, deployed to GitHub Pages at
+**https://vanisharma121-arch.github.io/portfolio/**
 
 ## Run it
 
 ```bash
-cd react
 npm install
-npm run dev      # local dev server (hot reload)
-npm run build    # production build into dist/
-npm run preview  # preview the production build
+npm run dev      # http://localhost:5173
+npm run build    # production build → dist/
+npm run preview  # serve the production build
 ```
 
-## Add your assets
+## Editing content
 
-Drop these into the `public/` folder (create it if it doesn't exist) so they're
-served from the site root:
+All copy lives in [`src/data.js`](src/data.js) — profile, stats, approach cards,
+education, experience, projects, skills, languages, hobbies, contact links, and
+the achievement list. Components read from it and stay presentational, so
+content edits shouldn't need a component change.
 
-- `public/photo.jpg` — the hero / about portrait (falls back to a placeholder if missing)
-- `public/Vani_Sharma_CV.pdf` — the file the "Download CV" button links to
+Assets in `public/` (`photo.jpg`, `Vani_Sharma_CV.pdf`) are copied to the build
+root. Reference them through `import.meta.env.BASE_URL`, never as a bare `/path`
+— the site is served from the `/portfolio/` subpath.
 
 ## Structure
 
 ```
 src/
-  main.jsx              # React entry point
+  main.jsx              # entry — wraps <App> in <GameProvider>
   App.jsx               # composes the page sections
-  index.css             # global styles (ported verbatim from the original)
-  data.js               # all repeated content (nav, skills, experience, projects, contact)
+  index.css             # complete design system, no framework
+  data.js               # all content
+  game/
+    GameContext.jsx     # XP + achievements, persisted to localStorage
+    HUD.jsx             # level ring, XP readout, trophy tray
+    Toasts.jsx          # "achievement unlocked" toasts
   hooks/
-    useScrollEffects.js # scroll-reveal animations + nav background on scroll
+    useScrollEffects.js # scroll reveal, count-up, section-reached, Konami
   components/
-    Nav.jsx  Hero.jsx  PhotoFrame.jsx  HowIWork.jsx
-    Skills.jsx  Experience.jsx  Projects.jsx  Contact.jsx  Footer.jsx
+    Nav  Hero  Stats  HowIWork  Skills
+    Experience  Projects  Resume  Contact  Footer  PhotoFrame
 ```
+
+## The game layer
+
+Visitors earn XP for exploring: reaching each section, opening project cards,
+downloading the CV, and one Konami-code easter egg. Progress persists in
+`localStorage` under `vs-portfolio-progress` and can be cleared from the trophy
+tray's *Reset progress* button.
+
+Note that the displayed statistics (45% engagement, 75% impressions, 57% traffic)
+are real figures from the CV. The gamification deliberately scores *site
+exploration* rather than assigning invented proficiency ratings to skills.

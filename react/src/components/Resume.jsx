@@ -1,50 +1,65 @@
-import { education, experience, experienceChips } from '../data'
+import { education, hobbies, languages, profile } from '../data'
+import { useGame } from '../game/GameContext'
+import { useSectionReached } from '../hooks/useScrollEffects'
+import PhotoFrame from './PhotoFrame'
+
+const asset = (file) => `${import.meta.env.BASE_URL}${file}`
 
 export default function Resume() {
+  const { unlock } = useGame()
+  const ref = useSectionReached(() => unlock('resume'))
+
   return (
-    <section id="resume" className="section green">
-      <span className="ghost-word">RESUME</span>
-      <div className="section-inner">
-        <div className="resume-grid">
-          {/* Education */}
-          <div>
-            <h2 className="kicker reveal">
-              <span className="star">✦</span> Education
-            </h2>
-            <div className="edu-list reveal">
-              {education.map((edu) => (
-                <div className="edu-item" key={edu.years}>
-                  <div className="edu-years">{edu.years}</div>
-                  <div className="edu-school">{edu.school}</div>
-                  <div className="edu-detail">{edu.detail}</div>
+    <section className="section section--gray" id="resume" ref={ref}>
+      <div className="shell">
+        <p className="eyebrow reveal">Resume</p>
+        <h2 className="h2 reveal">The short version.</h2>
+
+        <div className="grid grid--2" style={{ alignItems: 'start', marginTop: 40 }}>
+          <div className="reveal">
+            <h3 className="h3">Education</h3>
+            {education.map((e) => (
+              <div className="edu-item" key={e.school}>
+                <div className="edu-years">{e.years}</div>
+                <div>
+                  <div className="edu-school">{e.school}</div>
+                  <div className="edu-detail">{e.detail}</div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+
+            <a
+              className="btn btn--primary"
+              style={{ marginTop: 26 }}
+              href={asset(profile.cv)}
+              download
+              onClick={() => unlock('cv')}
+            >
+              ↓ Download full CV
+            </a>
           </div>
 
-          {/* Experience gold card */}
-          <div className="exp-card reveal">
-            <h2 className="kicker">
-              <span className="star">✦</span> Experience
-            </h2>
-            <div className="exp-list">
-              {experience.map((exp) => (
-                <div className="exp-item" key={exp.title + exp.year}>
-                  <div className="exp-year">{exp.year}</div>
-                  <div className="exp-title">{exp.title}</div>
-                  <div className="exp-detail">{exp.detail}</div>
-                  <div className="exp-org">{exp.org}</div>
-                </div>
-              ))}
-            </div>
-            <div className="exp-chips">
-              {experienceChips.map((chip) => (
-                <span className="exp-chip" key={chip}>
-                  #{chip}
-                </span>
-              ))}
-            </div>
+          <div className="reveal">
+            <PhotoFrame />
+
+            <h3 className="h3" style={{ marginTop: 32 }}>Languages</h3>
+            {languages.map((l) => (
+              <div className="lang-row" key={l.name}>
+                <span>{l.name}</span>
+                <span className="lang-level">{l.level}</span>
+              </div>
+            ))}
           </div>
+        </div>
+
+        <h3 className="h3 reveal" style={{ marginTop: 56 }}>Beyond the bench</h3>
+        <div className="hobbies">
+          {hobbies.map((h) => (
+            <div className="hobby reveal" key={h.label}>
+              <div className="hobby__icon" aria-hidden="true">{h.icon}</div>
+              <div className="hobby__label">{h.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

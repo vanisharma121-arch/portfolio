@@ -1,99 +1,43 @@
-import { useState } from 'react'
-import { tools, domainSkills } from '../data'
-
-function MiniPhoto() {
-  const [failed, setFailed] = useState(false)
-  return (
-    <div className="stats-mini-photo">
-      {!failed ? (
-        <img src="/photo.jpg" alt="Vani Sharma" onError={() => setFailed(true)} />
-      ) : (
-        <div className="mp-ph" style={{ display: 'flex' }}>
-          👩‍🔬
-        </div>
-      )}
-    </div>
-  )
-}
+import { skillChips, skillColumns } from '../data'
+import { useGame } from '../game/GameContext'
+import { useSectionReached } from '../hooks/useScrollEffects'
 
 export default function Skills() {
+  const { unlock } = useGame()
+  const ref = useSectionReached(() => unlock('skills'))
+
   return (
-    <section id="skills">
-      <div className="skills-wrap">
-        <div className="section-eyebrow reveal">My Skills</div>
-        <h2 className="section-title reveal">
-          Built for both
-          <br />
-          science &amp; story.
-        </h2>
-        <p className="section-sub reveal">
-          A rare mix of laboratory expertise, digital marketing know-how, and software
-          proficiency.
+    <section className="section section--gray" id="skills" ref={ref}>
+      <div className="shell">
+        <p className="eyebrow reveal">Skills</p>
+        <h2 className="h2 reveal">Trained in two languages: data and design.</h2>
+        <p className="lede reveal" style={{ marginBottom: 46 }}>
+          Bench technique on one side, brand and analytics on the other.
         </p>
 
-        <div className="skills-grid">
-          {/* Left: stats card */}
-          <div className="stats-card reveal">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-              <MiniPhoto />
-              <div>
-                <div
-                  style={{
-                    fontFamily: "'Syne', sans-serif",
-                    fontWeight: 700,
-                    fontSize: '0.95rem',
-                  }}
-                >
-                  Vani Sharma
-                </div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)' }}>
-                  MS Biotechnology · Boston
-                </div>
+        <div className="grid grid--2">
+          {skillColumns.map((col) => (
+            <div className="reveal" key={col.heading}>
+              <div className="skill-col__head">
+                <span className="skill-col__icon" aria-hidden="true">{col.icon}</span>
+                <h3 className="h3" style={{ margin: 0 }}>{col.heading}</h3>
               </div>
+              <ul className="skill-list">
+                {col.items.map((item) => (
+                  <li className="skill-item" key={item}>
+                    <span className="skill-item__dot" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <div className="stats-numbers">
-              <div className="stat-block t1">
-                <div className="s-num">6+</div>
-                <div className="s-lbl">Internships &amp; roles</div>
-              </div>
-              <div className="stat-block t2">
-                <div className="s-num">3</div>
-                <div className="s-lbl">Countries of experience</div>
-              </div>
-            </div>
-
-            <p className="stats-blurb">
-              From research labs in India to consumer-trial work in Mumbai to graduate study
-              in Boston — bringing global perspective to every project.
-            </p>
-          </div>
-
-          {/* Right: tool cards */}
-          <div className="tools-row">
-            {tools.map((tool) => (
-              <div className={`tool-card ${tool.color} reveal`} key={tool.name}>
-                <div className="tc-icon">{tool.icon}</div>
-                <div>
-                  <div className="tc-name">{tool.name}</div>
-                  <div className="tc-meta">{tool.meta}</div>
-                </div>
-                <span className="tc-bg-emoji">{tool.icon}</span>
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
 
-        {/* Domain skill chips */}
-        <div className="domain-skills reveal">
-          <h4>Domain Skills</h4>
-          <div className="domain-chips">
-            {domainSkills.map((chip) => (
-              <span className={`domain-chip ${chip.tone}`} key={chip.label}>
-                {chip.label}
-              </span>
-            ))}
-          </div>
+        <div className="chips reveal">
+          {skillChips.map((c) => (
+            <span className="chip" key={c}>{c}</span>
+          ))}
         </div>
       </div>
     </section>

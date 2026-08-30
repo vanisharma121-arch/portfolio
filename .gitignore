@@ -15,3 +15,6 @@ token.json
 # Temp / generated
 .tmp/
 screenshot_*.png
+
+# Build output
+dist/

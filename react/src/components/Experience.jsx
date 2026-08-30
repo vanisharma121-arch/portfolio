@@ -1,36 +1,38 @@
-import { experience } from '../data'
+import { experience, experienceChips } from '../data'
+import { useGame } from '../game/GameContext'
+import { useSectionReached } from '../hooks/useScrollEffects'
 
 export default function Experience() {
-  return (
-    <section id="experience">
-      <div className="section-head-center">
-        <div className="section-eyebrow reveal">Career Journey</div>
-        <h2 className="section-title reveal">Work Experience</h2>
-        <p className="section-sub reveal">
-          Six roles across research labs, agencies, and student organisations.
-        </p>
-      </div>
+  const { unlock } = useGame()
+  // Fires near the end of the timeline, so the badge means "walked the whole thing".
+  const endRef = useSectionReached(() => unlock('experience'), 0.6)
 
-      <div className="timeline">
-        {experience.map((role) => (
-          <div className="tl-item reveal" key={role.title + role.date}>
-            <div>
-              <div className="tl-label">{role.label}</div>
-              <div className="tl-card">
-                <div className="tl-header">
-                  <span className="tl-title">{role.title}</span>
-                  <span className="tl-date">{role.date}</span>
-                </div>
-                <div className="tl-org">{role.org}</div>
-                <ul className="tl-bullets">
-                  {role.bullets.map((bullet, i) => (
-                    <li key={i}>{bullet}</li>
-                  ))}
-                </ul>
-              </div>
+  return (
+    <section className="section" id="experience">
+      <div className="shell">
+        <p className="eyebrow reveal">Experience</p>
+        <h2 className="h2 reveal">Four years, two disciplines.</h2>
+
+        <div className="timeline">
+          {experience.map((e, i) => (
+            <div
+              className="tl-item reveal"
+              key={`${e.year}-${e.title}`}
+              ref={i === experience.length - 1 ? endRef : null}
+            >
+              <div className="tl-year">{e.year}</div>
+              <div className="tl-title">{e.title}</div>
+              <div className="tl-org">{e.org}</div>
+              <p className="tl-detail">{e.detail}</p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        <div className="chips reveal">
+          {experienceChips.map((c) => (
+            <span className="chip" key={c}>{c}</span>
+          ))}
+        </div>
       </div>
     </section>
   )

@@ -1,51 +1,47 @@
-import PhotoFrame from './PhotoFrame'
+import { useEffect } from 'react'
 import { profile } from '../data'
+import { useGame } from '../game/GameContext'
+
+const asset = (file) => `${import.meta.env.BASE_URL}${file}`
 
 export default function Hero() {
-  const { contact } = profile
+  const { unlock } = useGame()
+
+  // "First Contact" — awarded shortly after arrival so the HUD has a reason to
+  // appear before the visitor has scrolled anywhere.
+  useEffect(() => {
+    const t = setTimeout(() => unlock('arrive'), 1200)
+    return () => clearTimeout(t)
+  }, [unlock])
 
   return (
-    <section id="hero">
-      <span className="ghost-word">PORTFOLIO</span>
+    <header className="hero" id="top">
+      <div className="hero__inner shell">
+        <span className="hero__badge">✦ {profile.badge}</span>
 
-      <div className="hero-left">
-        <h1 className="hero-greet">
-          Hello,
-          <br />
-          I'm {profile.firstName} <span className="excl">!</span>
-        </h1>
-        <p className="hero-bio">{profile.bio}</p>
-        <a
-          className="hero-search"
-          href={profile.linkedinUrl}
-          target="_blank"
-          rel="noopener"
-        >
-          <span className="mag">🔍</span>
-          {profile.linkedin}
-        </a>
-      </div>
+        <h1 className="hero__name">{profile.headline}</h1>
+        <p className="hero__tagline">{profile.tagline}</p>
+        <p className="hero__sub">{profile.subhead}</p>
 
-      <div className="hero-right">
-        <div className="hero-photo-wrap">
-          <PhotoFrame />
-          <span className="badge-date">{profile.badge}</span>
-          <span className="badge-nat">{profile.nationality}</span>
-
-          <div className="contact-card">
-            <h4>Contact</h4>
-            <div className="cc-row">
-              <span className="cc-ic">📍</span> {contact.location}
-            </div>
-            <a className="cc-row" href={`mailto:${contact.email}`}>
-              <span className="cc-ic">✉️</span> {contact.email}
-            </a>
-            <a className="cc-row" href={`tel:${contact.phone.replace(/[^+\d]/g, '')}`}>
-              <span className="cc-ic">📞</span> {contact.phone}
-            </a>
-          </div>
+        <div className="hero__cta">
+          <a className="btn btn--primary" href="#work">
+            See the work
+          </a>
+          <a
+            className="btn btn--ghost"
+            href={asset(profile.cv)}
+            download
+            onClick={() => unlock('cv')}
+          >
+            ↓ Download CV
+          </a>
         </div>
       </div>
-    </section>
+
+      <div className="hero__scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <span>↓</span>
+      </div>
+    </header>
   )
 }

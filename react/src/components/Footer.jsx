@@ -1,10 +1,19 @@
+import { profile } from '../data'
+
 export default function Footer() {
-  const year = new Date().getFullYear()
   return (
-    <footer>
-      <span className="f-logo">VS</span>
-      <span>© {year} Vani Sharma · Boston, MA</span>
-      <span>sharma.vani1@northeastern.edu · +1 (857) 396-8591</span>
+    <footer className="footer">
+      <div className="shell">
+        <div>
+          © {new Date().getFullYear()} {profile.name} · {profile.contact.location}
+        </div>
+        <div style={{ marginTop: 6 }}>
+          <a href={`mailto:${profile.contact.email}`}>{profile.contact.email}</a>
+        </div>
+        <div className="footer__hint">
+          Psst — this page keeps score. There's one badge you can only type your way into.
+        </div>
+      </div>
     </footer>
   )
 }
