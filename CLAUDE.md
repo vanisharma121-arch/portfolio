@@ -17,25 +17,42 @@ npm run preview   # serve the production build
 
 ### Structure
 
+The build has **two pages**, not one route tree:
+
+| Document | Served at | Entry |
+| --- | --- | --- |
+| Homepage | `/portfolio/` | `src/main.jsx` → `App.jsx` |
+| PM Playbook | `/portfolio/playbook/` | `src/playbook.jsx` → `PlaybookApp.jsx` |
+
+They are separate HTML documents registered as Vite `rollupOptions.input`, not
+client-side routes. That is deliberate: GitHub Pages has no SPA 404 fallback, so
+a client-side route would break on direct load or refresh. Both share the same
+stylesheet, game layer and `localStorage` key, so XP carries across pages.
+
 ```
 react/
-  index.html            # document head: title, meta, OG tags, favicon
-  vite.config.js        # base = '/portfolio/' on build (Pages project site), '/' in dev
+  index.html            # homepage document head
+  playbook/index.html   # playbook document head
+  vite.config.js        # base = '/portfolio/' on build; two-page rollup input
   public/               # copied verbatim into the build root
     photo.jpg           # portrait used in the resume section
     Vani_Sharma_CV.pdf  # target of every "Download CV" button
   src/
-    main.jsx            # entry; wraps <App> in <GameProvider>
-    App.jsx             # composes the page sections
+    main.jsx            # homepage entry; wraps <App> in <GameProvider>
+    playbook.jsx        # playbook entry; same provider, same storage key
+    App.jsx             # composes the homepage sections
+    PlaybookApp.jsx     # composes the playbook sections
     index.css           # the whole design system (no CSS framework)
-    data.js             # ALL copy and content — edit here, not in components
+    data.js             # homepage copy, nav, achievements
+    playbookData.js     # playbook copy — plays, field notes, case file, FAQ
     game/
       GameContext.jsx   # XP + achievement state, persisted to localStorage
       HUD.jsx           # level ring, XP readout, trophy tray
       Toasts.jsx        # "achievement unlocked" toasts
     hooks/
       useScrollEffects.js  # scroll reveal, count-up, section-reached, Konami
-    components/         # one file per section, all presentational
+    components/         # homepage sections
+      playbook/         # playbook sections
 ```
 
 ## Conventions that matter
@@ -65,6 +82,20 @@ from her CV — never invent proficiency scores or metrics.
 
 **Respect `prefers-reduced-motion`.** Reveals and count-ups check it and jump
 straight to the final state.
+
+**Scroll reveal uses `data-revealed`, not a class — don't "simplify" it back.**
+The IntersectionObserver marks revealed elements with an attribute because React
+owns `className` on many of them. Any component that toggles its own class (an
+open project card, an expanded play, a FAQ row) rewrites the whole class
+attribute on re-render, which silently strips an out-of-band class and leaves
+the element stranded at `opacity: 0` forever, since the observer has already
+unobserved it. React does not manage `data-revealed`, so it survives.
+
+**The playbook's numbers are quoted from real reports.** Sprint figures,
+completion percentages and efficiency scores come from the DMSB Dash Labs sprint
+plan, the Sprints 1–3 executive report and the W17–W18 RA dashboard. Treat
+`playbookData.js` as a quotation, not a template — don't adjust figures to make
+a point land better.
 
 ## Deployment
 

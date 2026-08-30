@@ -11,6 +11,7 @@ export const navLinks = [
   { href: '#experience', label: 'Experience' },
   { href: '#work', label: 'Work' },
   { href: '#resume', label: 'Resume' },
+  { href: 'playbook/', label: 'PM Playbook', external: true },
 ]
 
 // ─── HERO ───
@@ -191,6 +192,8 @@ export const achievements = [
   { id: 'allwork',   name: 'Completionist',    hint: 'Open every project',                  xp: 30, icon: '🏅' },
   { id: 'resume',    name: 'Paper Trail',      hint: 'Reach the resume',                    xp: 15, icon: '📄' },
   { id: 'cv',        name: 'Recruiter Mode',   hint: 'Download the CV',                     xp: 25, icon: '💼' },
+  { id: 'playbook',  name: 'Playbook Opened',  hint: 'Open the PM Playbook',                xp: 20, icon: '📘' },
+  { id: 'plays',     name: 'Student of the Game', hint: 'Read all six plays',               xp: 30, icon: '🎯' },
   { id: 'konami',    name: 'Easter Egg',       hint: 'Some secrets are keyed in',           xp: 50, icon: '🥚' },
 ]
 

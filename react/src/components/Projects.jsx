@@ -6,15 +6,18 @@ export default function Projects() {
   const { unlock } = useGame()
   const [opened, setOpened] = useState([])
 
+  // Next state is computed outside the updater: unlock() sets state on the
+  // provider, and calling it from inside a setState callback would be a
+  // state update during render.
   const toggle = (num) => {
-    setOpened((prev) => {
-      if (prev.includes(num)) return prev.filter((n) => n !== num)
+    const isOpen = opened.includes(num)
+    const next = isOpen ? opened.filter((n) => n !== num) : [...opened, num]
+    setOpened(next)
 
-      const next = [...prev, num]
+    if (!isOpen) {
       unlock('work')
       if (next.length === projects.length) unlock('allwork')
-      return next
-    })
+    }
   }
 
   return (

@@ -5,15 +5,22 @@ const reduceMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 /**
- * Adds `.is-visible` to every `.reveal` element as it scrolls into view.
+ * Marks every `.reveal` element as revealed once it scrolls into view.
  * Re-runs when `deps` change so late-mounted content still animates.
+ *
+ * The flag is the `data-revealed` attribute rather than a class, deliberately.
+ * React owns `className` on these elements — a component that toggles its own
+ * class (an open project card, an expanded FAQ row) re-renders and rewrites the
+ * whole class attribute, which would silently strip a class added out-of-band
+ * here and leave the element stuck at opacity 0. React does not manage this
+ * attribute, so it survives re-renders.
  */
 export function useScrollReveal(deps = []) {
   useEffect(() => {
-    const nodes = document.querySelectorAll('.reveal:not(.is-visible)')
+    const nodes = document.querySelectorAll('.reveal:not([data-revealed])')
 
     if (reduceMotion()) {
-      nodes.forEach((el) => el.classList.add('is-visible'))
+      nodes.forEach((el) => el.setAttribute('data-revealed', ''))
       return
     }
 
@@ -21,7 +28,7 @@ export function useScrollReveal(deps = []) {
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) {
-            e.target.classList.add('is-visible')
+            e.target.setAttribute('data-revealed', '')
             obs.unobserve(e.target)
           }
         })
