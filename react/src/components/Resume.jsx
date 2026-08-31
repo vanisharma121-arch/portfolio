@@ -24,6 +24,7 @@ export default function Resume() {
                 <div>
                   <div className="edu-school">{e.school}</div>
                   <div className="edu-detail">{e.detail}</div>
+                  {e.coursework && <div className="edu-coursework">{e.coursework}</div>}
                 </div>
               </div>
             ))}

@@ -1,23 +1,28 @@
 // Content for the PM Playbook page.
 //
-// Everything here comes from the DMSB Dash Labs programme Vani ran as Product
-// Manager (Apr–Jun 2026) and from the reports she produced for it: the 8-week
-// sprint plan, the Sprints 1–3 Executive PM Report (06 May 2026), and the
-// W17–W18 RA efficiency dashboard. Figures are quoted from those documents —
-// don't invent new ones.
+// Everything here comes from the programme Vani ran as Product Manager at the
+// D'Amore-McKim AI Strategic Hub (DASH) and from the reports she produced for
+// it: the 8-week sprint plan, the Sprints 1–3 Executive PM Report (06 May
+// 2026), and the W17–W18 RA efficiency dashboard. Figures are quoted from those
+// documents — don't invent new ones.
+//
+// Note on counts: the resume says she leads six concurrent AI-product programs.
+// This playbook documents the four products covered by the Sprints 1–3 report,
+// so the copy says "four of the hub's products" rather than "four products" —
+// keep that distinction, it stops the two pages contradicting each other.
 
 export const playbookMeta = {
   kicker: 'The PM Playbook',
   title: 'How I run a multi-product sprint programme.',
   subtitle:
-    'Four AI products, eight sprints, eleven research assistants, and two hard milestones. These are the plays I actually used at DMSB Dash Labs — including the ones I learned the expensive way.',
+    'Four of the hub’s AI products, eight sprints, eleven research assistants, and two hard milestones. These are the plays I actually used as Product Manager at the D’Amore-McKim AI Strategic Hub — including the ones I learned the expensive way.',
   context:
-    'From April 2026 I ran product management for DMSB Dash Labs: four AI-powered education tools built in parallel by a research-assistant team, against a demo milestone and a delivery milestone eight weeks apart. Everything below is drawn from the sprint plan, sprint reports, and efficiency dashboards I wrote for that programme.',
+    'As Product Manager at the D’Amore-McKim AI Strategic Hub I lead delivery across six concurrent AI-product programs. This playbook draws on four of them — AI-powered education tools built in parallel by a research-assistant team, against a demo milestone and a delivery milestone eight weeks apart — and on the sprint plan, sprint reports and efficiency dashboards I wrote for that stretch.',
 }
 
 // ─── PROGRAMME AT A GLANCE ───
 export const programStats = [
-  { value: 4, suffix: '', label: 'Products in parallel', context: 'Essaybot · Press-Bot · Learn Autonomy · Learnbot' },
+  { value: 4, suffix: '', label: 'Products in this report', context: 'Essaybot · Press-Bot · Learn Autonomy · Learnbot' },
   { value: 8, suffix: '', label: 'Sprint programme', context: 'Weekly sprints, Apr 20 – Jun 30' },
   { value: 11, suffix: '', label: 'Research assistants', context: '20–35h weekly capacity each' },
   { value: 222, suffix: '', label: 'Tickets planned', context: 'across all four backlogs' },

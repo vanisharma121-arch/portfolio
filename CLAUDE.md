@@ -91,6 +91,13 @@ attribute on re-render, which silently strips an out-of-band class and leaves
 the element stranded at `opacity: 0` forever, since the observer has already
 unobserved it. React does not manage `data-revealed`, so it survives.
 
+**`data.js` mirrors the resume at `react/public/Vani_Sharma_CV.pdf`.** That PDF
+is the source of truth for titles, dates, GPAs, employers and every metric on
+the homepage. When the resume changes, update both together — and don't add a
+claim to the site that isn't in the resume. Vani is positioned as a **product
+and program manager in life sciences and biotech**, not as a brand or marketing
+strategist; earlier versions of this site used that older framing.
+
 **The playbook's numbers are quoted from real reports.** Sprint figures,
 completion percentages and efficiency scores come from the DMSB Dash Labs sprint
 plan, the Sprints 1–3 executive report and the W17–W18 RA dashboard. Treat

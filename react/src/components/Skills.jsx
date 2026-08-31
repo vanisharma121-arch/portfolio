@@ -10,9 +10,9 @@ export default function Skills() {
     <section className="section section--gray" id="skills" ref={ref}>
       <div className="shell">
         <p className="eyebrow reveal">Skills</p>
-        <h2 className="h2 reveal">Trained in two languages: data and design.</h2>
+        <h2 className="h2 reveal">Four domains, one throughline.</h2>
         <p className="lede reveal" style={{ marginBottom: 46 }}>
-          Bench technique on one side, brand and analytics on the other.
+          Delivery, compliance, analytics and the bench — the span is the point.
         </p>
 
         <div className="grid grid--2">

@@ -1,9 +1,10 @@
 // Central content for the portfolio. Edit copy/data here — the components are
 // purely presentational.
 //
-// Every metric in this file is taken from Vani's CV. Nothing here is invented:
-// the "stats" the site animates are real, verifiable outcomes, which is why the
-// gamification rewards *exploring the site* rather than rating her skills.
+// Source of truth: Vani's resume (August 2026 version, mirrored at
+// public/Vani_Sharma_CV.pdf). Every metric below is quoted from it — the site
+// gamifies *exploring the page*, never her credentials, so don't invent figures
+// or proficiency ratings.
 
 export const navLinks = [
   { href: '#approach', label: 'Approach' },
@@ -18,15 +19,14 @@ export const navLinks = [
 export const profile = {
   name: 'Vani Sharma',
   firstName: 'Vani',
-  tagline: 'Biotechnology Researcher & Brand Strategist',
-  headline: 'Science, told well.',
+  tagline: 'Product & Program Management · Life Sciences & Biotech',
+  headline: 'Science, shipped.',
   subhead:
-    'MS Biotechnology candidate at Northeastern, working where rigorous lab science meets brand strategy — and translating one into the other.',
-  bio: 'I am an MS Biotechnology candidate at Northeastern University, bridging lab science and brand strategy. From clinical R&D at Nivea to social campaigns that grew engagement 45%, I love turning complex science into clear, human stories.',
+    'Product and program manager pairing wet-lab R&D — CRISPR, dermatological clinical studies — with the delivery of AI-powered life-sciences tools. I move programs from stakeholder requirements to launch, and turn scientific work into decision-ready reporting.',
+  bio: 'MS Biotechnology candidate at Northeastern University and Product Manager at the D’Amore-McKim AI Strategic Hub, where I lead delivery across six concurrent AI-product programs. My background runs from CRISPR and mammalian cell culture to GCP-aligned clinical studies — which is what lets me sit between the science and the schedule.',
   linkedin: 'linkedin.com/in/vanisharma',
   linkedinUrl: 'https://www.linkedin.com/in/vanisharma',
-  badge: 'MS Biotech · 2026',
-  nationality: 'Indian',
+  badge: 'MS Biotech · Dec 2026',
   cv: 'Vani_Sharma_CV.pdf',
   photo: 'photo.jpg',
   contact: {
@@ -36,127 +36,176 @@ export const profile = {
   },
 }
 
-// ─── HEADLINE STATS ─── (animated counters; all from the CV)
+// ─── HEADLINE STATS ─── (animated counters; all quoted from the resume)
 export const stats = [
-  { value: 45, suffix: '%', label: 'Engagement growth', context: 'E-Cell, MIT Manipal' },
-  { value: 75, suffix: '%', label: 'Content impressions', context: 'across all platforms' },
-  { value: 57, suffix: '%', label: 'Website traffic lift', context: '225.in PR campaigns' },
-  { value: 4, suffix: '', label: 'Research & industry roles', context: 'Nivea · Glenmark · MIT' },
+  { value: 6, suffix: '', label: 'Concurrent AI programs', context: 'D’Amore-McKim AI Strategic Hub' },
+  { value: 91, suffix: '%', label: 'On-time experiment starts', context: 'up from 68% · Neoclease' },
+  { value: 34, suffix: '%', label: 'Lab throughput lift', context: 'after introducing Jira Kanban' },
+  { value: 3, suffix: '', label: 'GCP-aligned clinical studies', context: 'n≈120 · Beiersdorf (NIVEA)' },
 ]
 
 // ─── HOW I WORK ───
+// Mirrors the three movements in the resume summary: rigour at the bench,
+// delivery of programs, and reporting leadership can act on.
 export const howCards = [
   {
     num: '01',
-    icon: '🔬',
-    title: 'Research & Analysis',
+    icon: '🧬',
+    title: 'Rigour at the bench',
     detail:
-      'From nanoparticle biosynthesis to clinical trials, I apply rigorous scientific method to extract meaningful insights from complex experimental data.',
+      'CRISPR gene editing, mammalian cell culture and GCP-aligned dermatological studies. I set the data-quality and validation standards that decide whether downstream analysis is worth trusting.',
   },
   {
     num: '02',
-    icon: '📣',
-    title: 'Strategy & Branding',
+    icon: '🗂️',
+    title: 'Programs that land',
     detail:
-      'I design data-driven social media strategies and PR campaigns that have boosted website traffic by 57% and grown engagement by 45%.',
+      'Sprint planning, backlog and dependency management across concurrent programs — keeping milestones honest against the baseline plan rather than against optimism.',
   },
   {
     num: '03',
-    icon: '🚀',
-    title: 'Execution & Growth',
+    icon: '📊',
+    title: 'Decision-ready reporting',
     detail:
-      'From consumer trials at Nivea to leading content teams, I deliver projects on time with measurable outcomes and clear KPI reporting.',
+      'Dashboards and executive templates that give leadership early visibility into risk. Scientific work is only useful once someone can make a call from it.',
   },
 ]
 
 // ─── EDUCATION ───
 export const education = [
-  { years: '2024 – 2026', school: 'Northeastern University, Boston', detail: 'MS, Biotechnology' },
-  { years: '2020 – 2024', school: 'Manipal Institute of Technology', detail: 'B.Tech, Biotechnology · GPA 3.8' },
-  { years: '2017 – 2020', school: 'Higher Secondary', detail: 'Science (PCB) · India' },
+  {
+    years: 'Expected Dec 2026',
+    school: 'Northeastern University, Boston',
+    detail: 'M.S., Biotechnology · GPA 3.8/4.0',
+    coursework:
+      'Biotechnology Enterprise · Biostatistics · R Programming · Healthcare Project Management · Emerging Market Studies',
+  },
+  {
+    years: 'May 2024',
+    school: 'Manipal Institute of Technology',
+    detail: 'B.Tech, Biotechnology · Minor in Environmental Biotechnology · GPA 3.6/4.0',
+    coursework: 'Bioinformatics · Bioreaction Engineering · Environmental Biotechnology',
+  },
 ]
 
 // ─── EXPERIENCE ───
 export const experience = [
   {
+    year: '2025 — Present',
+    title: 'Product Manager',
+    org: 'D’Amore-McKim AI Strategic Hub (DASH) · Boston, MA',
+    detail:
+      'Lead delivery across six concurrent AI-product programs, owning sprint planning, backlog and dependency management. Built the program dashboards and executive reporting templates now used across the hub.',
+  },
+  {
+    year: '2025',
+    title: 'Research Associate',
+    org: 'Neoclease, Tufts Launchpad Biolabs · Boston, MA',
+    detail:
+      'Introduced Jira Kanban to research operations, lifting on-time experiment starts from 68% to 91% and raising lab throughput 34%. Set data-quality standards for AI/ML models on CRISPR cell and gene therapy datasets.',
+  },
+  {
     year: '2024',
-    title: 'R&D Intern',
-    detail: 'Developed formulations targeting hyperpigmentation; ran clinical & consumer trials.',
-    org: 'Nivea Pvt Ltd, Mumbai',
-  },
-  {
-    year: '2023',
-    title: 'Research Intern',
-    detail: 'Biosynthesis of Ag & Zn nanoparticles using eco-friendly plant extracts.',
-    org: 'Manipal Institute of Technology',
-  },
-  {
-    year: '2023',
-    title: 'Social Media & Content Head',
-    detail: 'Boosted engagement 45% and content impressions 75% across all platforms.',
-    org: 'E-Cell, MIT Manipal',
-  },
-  {
-    year: '2022',
-    title: 'Clinical Research Intern',
-    detail: 'Supported trial stages, data collection, documentation & protocol adherence.',
-    org: 'Glenmark Pharmaceutical, Mumbai',
+    title: 'R&D Associate',
+    org: 'Beiersdorf Pvt. Ltd. (NIVEA) · Mumbai, India',
+    detail:
+      'Ran three GCP-aligned dermatological efficacy studies (n≈120) measuring TEWL, erythema and pigmentation endpoints, and built the Tableau dashboards that turned raw efficacy data into decision-ready reporting.',
   },
 ]
 
-export const experienceChips = ['Research', 'Strategy', 'Detail-oriented', 'Adaptability']
+export const experienceChips = ['Program delivery', 'ICH-GCP', 'Stakeholder alignment', 'Executive reporting']
 
 // ─── SELECTED WORK ───
 export const projects = [
   {
     num: '01',
-    name: 'Nanoparticle Biosynthesis',
-    sub: 'Eco-friendly silver & zinc nanoparticle synthesis using plant extracts.',
+    name: 'ICU Simulator',
+    sub: 'Sanara Healthcare partnership — EHR documentation support for clinicians.',
     detail:
-      'Green-chemistry route to Ag and Zn nanoparticles using plant extracts as reducing agents, characterised by SEM and XRD — removing the harsh solvents conventional synthesis depends on.',
-    tags: ['Nanotech', 'Green Chemistry'],
+      'Led the Sanara Healthcare partnership from relationship into technical specifications and validation criteria, aligning four stakeholder groups on scope for an ICU simulator that helps doctors with EHR documentation.',
+    tags: ['Partnership', 'Requirements', 'Healthcare AI'],
   },
   {
     num: '02',
-    name: 'Skin-of-Color Formulation',
-    sub: 'Co-developed Nivea formulas targeting hyperpigmentation through consumer trials.',
+    name: 'Svastha (HealthVault)',
+    sub: 'Decentralized health-data platform, selected into Harvard Innovation Labs.',
     detail:
-      'Formulation work against hyperpigmentation for deeper skin tones, validated through structured clinical and consumer trials with documented protocol adherence.',
-    tags: ['R&D', 'Trials'],
+      'Business Operations Lead for an early-stage decentralized health-data startup, earning selection into the Harvard Innovation Labs (Foundry) accelerator. Ran market and competitive analysis to size the opportunity, define target segments and shape the product roadmap.',
+    tags: ['Go-to-market', 'Strategy', 'Harvard iLab'],
   },
   {
     num: '03',
-    name: 'E-Cell Social Strategy',
-    sub: "Grew engagement 45% and impressions 75% for MIT Manipal's entrepreneurship cell.",
+    name: 'Genomic Data Pipelines',
+    sub: 'Analysis-ready datasets for gene-therapy classification at Neoclease.',
     detail:
-      'Led content and social strategy for the entrepreneurship cell: rebuilt the content calendar around analytics, grew engagement 45% and impressions 75%.',
-    tags: ['Social', 'Analytics'],
+      'Built genomic data-extraction pipelines producing analysis-ready datasets for gene-therapy classification, standardising how the team handled sequencing outputs — and set the validation standards that kept AI/ML inputs at clinical-grade structure.',
+    tags: ['CRISPR', 'Data Pipelines', 'Validation'],
   },
   {
     num: '04',
-    name: '225.in Traffic Growth',
-    sub: 'PR campaigns that drove a 57% increase in website traffic and engagement.',
+    name: 'Dermatological Efficacy Studies',
+    sub: 'Three GCP-aligned studies at NIVEA, reported through Tableau.',
     detail:
-      'PR and earned-media campaigns built around a clear editorial angle, driving a 57% increase in site traffic and sustained engagement.',
-    tags: ['PR', 'SEO Content'],
+      'Three GCP-aligned efficacy studies (n≈120) measuring TEWL, erythema and pigmentation endpoints to ICH-GCP standards, with documentation across four product development workstreams kept audit-ready from formulation through study close.',
+    tags: ['ICH-GCP', 'Clinical Studies', 'Tableau'],
   },
 ]
 
 // ─── SKILLS ───
 export const skillColumns = [
   {
-    heading: 'Lab Techniques',
-    icon: '🧬',
-    items: ['PCR / qPCR', 'Cell Culture', 'Western Blotting', 'HPLC', 'SEM / XRD'],
+    heading: 'Product & Program',
+    icon: '🗂️',
+    items: [
+      'Sprint planning',
+      'Backlog & milestone tracking',
+      'Cross-functional coordination',
+      'Stakeholder management',
+      'Jira · Smartsheet',
+    ],
   },
   {
-    heading: 'Marketing & PR',
+    heading: 'Clinical & Regulatory',
+    icon: '📋',
+    items: [
+      'ICH-GCP',
+      'SOP development & compliance',
+      'Protocol & CRF review',
+      'Regulatory documentation',
+      'Clinical data validation',
+    ],
+  },
+  {
+    heading: 'Data & Analytics',
     icon: '📊',
-    items: ['Social Strategy', 'Content Creation', 'Branding', 'KPI Analytics', 'Canva'],
+    items: [
+      'Python · SQL · R',
+      'Tableau',
+      'Data cleaning & trending',
+      'Statistical modeling',
+      'Dashboard development',
+    ],
+  },
+  {
+    heading: 'Laboratory & Domain',
+    icon: '🧬',
+    items: [
+      'CRISPR gene editing',
+      'Mammalian cell culture (HEK293T, K562)',
+      'PCR / qPCR · DNA extraction',
+      'Western blot',
+      'TEWL · erythema · pigmentation endpoints',
+    ],
   },
 ]
 
-export const skillChips = ['Research', 'Branding', 'Clinical Trials', 'Storytelling', 'Data Analysis']
+export const skillChips = [
+  'Program delivery',
+  'Clinical compliance',
+  'Dashboard development',
+  'Stakeholder alignment',
+  'Executive reporting',
+]
 
 // ─── LANGUAGES ───
 export const languages = [

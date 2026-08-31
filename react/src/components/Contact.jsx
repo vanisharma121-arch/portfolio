@@ -5,9 +5,9 @@ export default function Contact() {
     <section className="section section--dark" id="contact">
       <div className="shell">
         <p className="eyebrow reveal">Contact</p>
-        <h2 className="h2 reveal">Let's build something worth explaining.</h2>
+        <h2 className="h2 reveal">Let&rsquo;s get something shipped.</h2>
         <p className="lede reveal">
-          Open to research, R&amp;D and science-communication roles from {profile.contact.location}.
+          Open to product and program management roles across life sciences and biotech, from {profile.contact.location}.
         </p>
 
         <div className="contact-grid">

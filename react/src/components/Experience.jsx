@@ -11,7 +11,7 @@ export default function Experience() {
     <section className="section" id="experience">
       <div className="shell">
         <p className="eyebrow reveal">Experience</p>
-        <h2 className="h2 reveal">Four years, two disciplines.</h2>
+        <h2 className="h2 reveal">From the bench to program delivery.</h2>
 
         <div className="timeline">
           {experience.map((e, i) => (

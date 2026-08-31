@@ -1019,3 +1019,12 @@ a.contact-card:hover { transform: translateY(-4px); border-color: var(--blue); }
   .note { grid-template-columns: 44px 1fr; gap: 16px; }
   .case__takeaway { padding: 22px; }
 }
+
+/* Coursework line under each education entry. */
+.edu-coursework {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg-dim);
+  opacity: 0.85;
+}

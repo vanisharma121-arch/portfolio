@@ -12,7 +12,7 @@ export default function HowIWork() {
         <p className="eyebrow reveal">My approach</p>
         <h2 className="h2 reveal">Three ways I create impact.</h2>
         <p className="lede reveal" style={{ marginBottom: 46 }}>
-          The same discipline runs through the lab bench and the content calendar.
+          The same discipline runs from the lab bench to the delivery plan.
         </p>
 
         <div className="grid grid--3">
