@@ -13,16 +13,9 @@ export default function About() {
         <div className="big reveal">About me</div>
         <div className="script reveal" style={{ transitionDelay: '.08s' }}>{profile.name}</div>
 
-        <div className="grid grid--2 reveal" style={{ gap: '2.5rem', marginTop: '2.5rem' }}>
-          <div>
-            <div className="eyebrow" style={{ color: 'var(--gry)', marginBottom: '.7rem' }}>About me</div>
-            <p className="card__body">{profile.bio}</p>
-          </div>
-          <div>
-            <div className="eyebrow" style={{ color: 'var(--gry)', marginBottom: '.7rem' }}>About my work</div>
-            <p className="card__body">{profile.subhead}</p>
-          </div>
-        </div>
+        <p className="lede reveal" style={{ transitionDelay: '.14s', marginTop: '2.5rem' }}>
+          {profile.bio}
+        </p>
       </div>
 
       <div className="photo-stack">

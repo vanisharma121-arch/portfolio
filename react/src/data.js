@@ -26,8 +26,6 @@ export const profile = {
     'The desire to build something at the intersection of biology and intelligence drives everything I do.',
   navMid: 'Product & Program Management',
   navYear: '2026',
-  subhead:
-    'Product and program manager pairing wet-lab R&D — CRISPR, dermatological clinical studies — with the delivery of AI-powered life-sciences tools. I move programs from stakeholder requirements to launch, and turn scientific work into decision-ready reporting.',
   bio: 'MS Biotechnology candidate at Northeastern University and Product Manager at the D’Amore-McKim AI Strategic Hub, where I lead delivery across six concurrent AI-product programs. My background runs from CRISPR and mammalian cell culture to GCP-aligned clinical studies — which is what lets me sit between the science and the schedule.',
   linkedin: 'linkedin.com/in/vanisharma',
   linkedinUrl: 'https://www.linkedin.com/in/vanisharma',
