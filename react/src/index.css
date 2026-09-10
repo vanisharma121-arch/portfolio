@@ -458,7 +458,39 @@ ul { list-style: none; margin: 0; padding: 0; }
 .is-right .trail__card { grid-column: 2; margin-left: 34px; }
 .is-right .trail__card::before { left: -28px; }
 
-.trail .tl-detail { max-width: none; }
+/* Card contents. These were lost when the timeline block was replaced by the
+   trail, which let <h3> fall back to the browser's bold default. */
+.tl-year {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--cobalt-bg);
+  color: var(--cobalt);
+  display: inline-block;
+  padding: 4px 10px;
+  margin-bottom: 12px;
+}
+
+.tl-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+
+.tl-org {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 10px;
+}
+
+.tl-detail { font-size: 14.5px; line-height: 1.55; color: var(--body); margin: 0; }
 
 /* ── Projects ──/* ── Projects ────────────────────────────────────────────────────────────── */
 
