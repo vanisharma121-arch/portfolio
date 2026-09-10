@@ -238,8 +238,9 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 .hero__portrait {
-  width: clamp(168px, 22vw, 264px);
-  height: clamp(168px, 22vw, 264px);
+  width: clamp(190px, 24vw, 300px);
+  aspect-ratio: 4 / 5;
+  height: auto;
   object-fit: cover;
   margin: 0 auto 28px;
   border: 1px solid var(--line2);
@@ -532,8 +533,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 .hobby { background: var(--card); text-align: center; padding: 20px 12px; }
 .hobby__icon { font-size: 17px; margin-bottom: 9px; }
 .hobby__label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); }
-
-.photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border: 1px solid var(--line2); }
 
 /* ── Contact ─────────────────────────────────────────────────────────────── */
 

@@ -1,7 +1,6 @@
 import { education, hobbies, languages, profile } from '../data'
 import { useGame } from '../game/GameContext'
 import { useSectionReached } from '../hooks/useScrollEffects'
-import PhotoFrame from './PhotoFrame'
 
 const asset = (file) => `${import.meta.env.BASE_URL}${file}`
 
@@ -41,9 +40,7 @@ export default function Resume() {
           </div>
 
           <div className="reveal">
-            <PhotoFrame />
-
-            <h3 className="h3" style={{ marginTop: 32 }}>Languages</h3>
+            <h3 className="h3">Languages</h3>
             {languages.map((l) => (
               <div className="lang-row" key={l.name}>
                 <span>{l.name}</span>
