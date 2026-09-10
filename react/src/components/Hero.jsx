@@ -17,6 +17,14 @@ export default function Hero() {
   return (
     <header className="hero" id="top">
       <div className="hero__inner shell">
+        <img
+          className="hero__portrait"
+          src={asset(profile.photo)}
+          alt={`${profile.name}, portrait`}
+          width="176"
+          height="176"
+        />
+
         <span className="hero__badge">✦ {profile.badge}</span>
 
         <h1 className="hero__name">{profile.headline}</h1>

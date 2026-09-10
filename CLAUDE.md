@@ -17,7 +17,10 @@ npm run preview   # serve the production build
 
 ### Structure
 
-The build has **two pages**, not one route tree:
+The build has **two pages**, not one route tree. Note that the playbook page
+below is **currently orphaned** — the nav entry and the Work card both point at
+the standalone https://vanisharma121-arch.github.io/product-playbook/ site
+instead, so `/portfolio/playbook/` still builds but nothing links to it:
 
 | Document | Served at | Entry |
 | --- | --- | --- |
@@ -35,7 +38,7 @@ react/
   playbook/index.html   # playbook document head
   vite.config.js        # base = '/portfolio/' on build; two-page rollup input
   public/               # copied verbatim into the build root
-    photo.jpg           # portrait used in the resume section
+    photo.jpg           # square head-and-shoulders crop, used in the hero
     Vani_Sharma_CV.pdf  # target of every "Download CV" button
   src/
     main.jsx            # homepage entry; wraps <App> in <GameProvider>
@@ -67,13 +70,22 @@ To change copy, projects, experience, or achievements, edit that file only.
 const asset = (file) => `${import.meta.env.BASE_URL}${file}`
 ```
 
-**Design language is Apple-inspired.** System font stack (SF Pro on Apple
-devices, Inter elsewhere), large tight-tracked headlines, alternating
-light/gray/dark full-bleed sections, a dark translucent fixed nav, and pill
-buttons. Section colors come from CSS custom properties that `.section--dark`
-and `.section--gray` override — style against `var(--fg)` / `var(--bg)` /
-`var(--line)` / `var(--card)` rather than hardcoding colors, so components work
-on any section background.
+**Design language matches the product-playbook site.** Palette and type are
+lifted from https://vanisharma121-arch.github.io/product-playbook/ so the two
+read as one brand: paper `#FBFAF7`, ink `#12141C`, body `#3A3F4C`, mute
+`#7C8191`, rules `#E4E2DB`/`#CDCAC1`, cobalt `#1B4FD8` with its `#EBF0FE`
+tint, plus violet/green/amber/red pairs. Fraunces for display, Inter for body,
+IBM Plex Mono for uppercase labels (`--serif` / `--sans` / `--mono`).
+
+The palette is **light throughout** — there are no inverted sections. The
+`.section--dark` modifier survives from the previous Apple-inspired design but
+now renders white-on-paper rather than black; it is kept only so the
+alternating rhythm still works. The footer and the game layer (HUD, tray,
+toasts) are the sole ink-on-light elements, and that is deliberate.
+
+Section colors come from CSS custom properties that `.section--dark` and
+`.section--gray` override — style against `var(--fg)` / `var(--bg)` /
+`var(--line)` / `var(--card)` rather than hardcoding colors.
 
 **Gamification rewards exploring the site, not rating Vani.** Achievements fire
 for reaching sections, opening projects, downloading the CV, and one Konami

@@ -52,7 +52,9 @@
   --radius-lg: 28px;
   --pill:      980px;
 
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --mono:  'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --shell: 1024px;
   --ease:  cubic-bezier(0.28, 0.11, 0.32, 1);
@@ -122,15 +124,18 @@ button { font: inherit; color: inherit; }
 /* ── Typography ──────────────────────────────────────────────────────────── */
 
 .eyebrow {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--blue);
   margin: 0 0 14px;
   text-transform: none;
 }
 
 .h1 {
+  font-family: var(--serif);
   font-size: clamp(44px, 8.4vw, 92px);
   line-height: 1.04;
   letter-spacing: -0.028em;
@@ -139,6 +144,7 @@ button { font: inherit; color: inherit; }
 }
 
 .h2 {
+  font-family: var(--serif);
   font-size: clamp(32px, 5.2vw, 56px);
   line-height: 1.08;
   letter-spacing: -0.024em;
@@ -147,6 +153,7 @@ button { font: inherit; color: inherit; }
 }
 
 .h3 {
+  font-family: var(--serif);
   font-size: clamp(21px, 2.4vw, 28px);
   line-height: 1.2;
   letter-spacing: -0.018em;
@@ -294,6 +301,9 @@ button { font: inherit; color: inherit; }
 .hero__inner { position: relative; z-index: 1; }
 
 .hero__badge {
+  font-family: var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -308,8 +318,9 @@ button { font: inherit; color: inherit; }
 }
 
 .hero__name {
+  font-family: var(--serif);
   font-size: clamp(52px, 11vw, 128px);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 0.98;
   letter-spacing: -0.035em;
   margin: 0 0 18px;
@@ -375,8 +386,9 @@ button { font: inherit; color: inherit; }
 }
 
 .stat__value {
+  font-family: var(--serif);
   font-size: clamp(38px, 5vw, 58px);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1;
   background: linear-gradient(120deg, var(--blue), var(--xp-b));
@@ -385,7 +397,7 @@ button { font: inherit; color: inherit; }
   color: transparent;
 }
 
-.stat__label { font-weight: 600; margin-top: 12px; font-size: 16px; }
+.stat__label { font-family: var(--mono); font-weight: 500; margin-top: 12px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
 .stat__context { color: var(--fg-dim); font-size: 14px; margin-top: 3px; }
 
 /* ── Generic card grid ───────────────────────────────────────────────────── */
@@ -410,10 +422,11 @@ button { font: inherit; color: inherit; }
 .card__icon { font-size: 32px; margin-bottom: 16px; }
 
 .card__num {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--blue);
-  letter-spacing: 0.04em;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cobalt);
+  letter-spacing: 0.1em;
   margin-bottom: 8px;
 }
 
@@ -457,12 +470,41 @@ button { font: inherit; color: inherit; }
 .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 26px; }
 
 .chip {
+  font-family: var(--mono);
+  letter-spacing: 0.06em;
   padding: 8px 15px;
   border-radius: var(--pill);
   border: 1px solid var(--line);
   font-size: 14px;
   color: var(--fg-dim);
 }
+
+/* Portrait leading the hero. The source file is already a square
+   head-and-shoulders crop, so no object-position nudging is needed. */
+.hero__portrait {
+  width: clamp(120px, 15vw, 176px);
+  height: clamp(120px, 15vw, 176px);
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto clamp(22px, 3vw, 34px);
+  border: 1px solid var(--line-2);
+  box-shadow: 0 12px 36px rgba(18, 20, 28, 0.10);
+}
+
+/* ── Skills grid ─────────────────────────────────────────────────────────
+   All four groups side by side so the whole skill set reads at once rather
+   than stacking into a long scroll. */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.skills-grid .skill-col__head { margin-bottom: 14px; }
+.skills-grid .skill-item { padding: 9px 12px; font-size: 14px; }
+
+@media (max-width: 1000px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { .skills-grid { grid-template-columns: 1fr; } }
 
 /* ── Timeline ────────────────────────────────────────────────────────────── */
 
@@ -501,13 +543,15 @@ button { font: inherit; color: inherit; }
 }
 
 .tl-year {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--blue);
-  letter-spacing: 0.03em;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cobalt);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.tl-title { font-size: 21px; font-weight: 600; letter-spacing: -0.016em; margin: 4px 0 2px; }
+.tl-title { font-family: var(--serif); font-size: 23px; font-weight: 500; letter-spacing: -0.01em; margin: 4px 0 2px; }
 .tl-org { font-size: 14px; color: var(--fg-dim); margin-bottom: 8px; }
 .tl-detail { color: var(--fg-dim); margin: 0; max-width: 60ch; }
 
@@ -535,10 +579,11 @@ button { font: inherit; color: inherit; }
 .project__top { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
 
 .project__num {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--xp-a);
-  letter-spacing: 0.05em;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cobalt);
+  letter-spacing: 0.1em;
 }
 
 .project__open {
@@ -548,7 +593,7 @@ button { font: inherit; color: inherit; }
 }
 .project:hover .project__open { transform: translate(3px, -3px); color: var(--xp-a); }
 
-.project__name { display: block; font-size: 25px; font-weight: 600; letter-spacing: -0.02em; margin: 10px 0 8px; }
+.project__name { display: block; font-family: var(--serif); font-size: 26px; font-weight: 500; letter-spacing: -0.01em; margin: 10px 0 8px; }
 .project__sub { display: block; color: var(--fg-dim); }
 
 .project__detail { display: block; margin-top: 16px; color: var(--fg-dim); font-size: 15px; line-height: 1.6; }
@@ -568,6 +613,8 @@ button { font: inherit; color: inherit; }
 .project__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 
 .tag {
+  font-family: var(--mono);
+  letter-spacing: 0.06em;
   font-size: 12px;
   padding: 5px 12px;
   border-radius: var(--pill);
@@ -587,7 +634,7 @@ button { font: inherit; color: inherit; }
 .edu-item:last-of-type { border-bottom: none; }
 
 .edu-years { font-size: 14px; color: var(--fg-dim); font-weight: 500; padding-top: 3px; }
-.edu-school { font-weight: 600; font-size: 18px; letter-spacing: -0.015em; }
+.edu-school { font-family: var(--serif); font-weight: 500; font-size: 20px; letter-spacing: -0.01em; }
 .edu-detail { color: var(--fg-dim); font-size: 15px; margin-top: 2px; }
 
 .lang-row { display: flex; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid var(--line); }

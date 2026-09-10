@@ -15,7 +15,7 @@ export default function Skills() {
           Delivery, compliance, analytics and the bench — the span is the point.
         </p>
 
-        <div className="grid grid--2">
+        <div className="skills-grid">
           {skillColumns.map((col) => (
             <div className="reveal" key={col.heading}>
               <div className="skill-col__head">
