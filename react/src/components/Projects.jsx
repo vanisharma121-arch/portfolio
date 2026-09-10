@@ -21,7 +21,7 @@ export default function Projects() {
         <p className="eyebrow reveal">Selected work</p>
         <h2 className="h2 reveal">Two projects worth opening.</h2>
         <p className="lede reveal" style={{ marginBottom: 46 }}>
-          Both are live — click either card to open it.
+          Both projects are live. Click a card to open it.
         </p>
 
         <div className="grid grid--2">

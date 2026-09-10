@@ -7,7 +7,7 @@ export default function Contact() {
         <p className="eyebrow reveal">Contact</p>
         <h2 className="h2 reveal">Let&rsquo;s get something shipped.</h2>
         <p className="lede reveal">
-          Open to product and program management roles across life sciences and biotech, from {profile.contact.location}.
+          I am available for product and program management roles in life sciences and biotech. I am in {profile.contact.location}.
         </p>
 
         <div className="contact-grid">

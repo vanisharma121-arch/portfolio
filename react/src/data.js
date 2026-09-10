@@ -22,8 +22,7 @@ export const profile = {
   tagline: 'Product & Program Management · Life Sciences & Biotech',
   headline: 'Science, shipped.',
   subhead:
-    'Product and program manager pairing wet-lab R&D — CRISPR, dermatological clinical studies — with the delivery of AI-powered life-sciences tools. I move programs from stakeholder requirements to launch, and turn scientific work into decision-ready reporting.',
-  bio: 'MS Biotechnology candidate at Northeastern University and Product Manager at the D’Amore-McKim AI Strategic Hub, where I lead delivery across six concurrent AI-product programs. My background runs from CRISPR and mammalian cell culture to GCP-aligned clinical studies — which is what lets me sit between the science and the schedule.',
+    'I am a product and program manager in life sciences. My laboratory work includes CRISPR and clinical studies. I move each program from stakeholder requirements to launch, and I make reports that managers can act on.',
   linkedin: 'linkedin.com/in/vanisharma',
   linkedinUrl: 'https://www.linkedin.com/in/vanisharma',
   badge: 'MS Biotech · Dec 2026',
@@ -39,8 +38,8 @@ export const profile = {
 // ─── HEADLINE STATS ─── (animated counters; all quoted from the resume)
 export const stats = [
   { value: 6, suffix: '', label: 'Concurrent AI programs', context: 'D’Amore-McKim AI Strategic Hub' },
-  { value: 91, suffix: '%', label: 'On-time experiment starts', context: 'up from 68% · Neoclease' },
-  { value: 34, suffix: '%', label: 'Lab throughput lift', context: 'after introducing Jira Kanban' },
+  { value: 91, suffix: '%', label: 'On-time experiment starts', context: 'Increase from 68% · Neoclease' },
+  { value: 34, suffix: '%', label: 'Laboratory output increase', context: 'After I introduced Jira Kanban' },
   { value: 3, suffix: '', label: 'GCP-aligned clinical studies', context: 'n≈120 · Beiersdorf (NIVEA)' },
 ]
 
@@ -51,23 +50,23 @@ export const howCards = [
   {
     num: '01',
     icon: '🧬',
-    title: 'Rigour at the bench',
+    title: 'Rigor in the laboratory',
     detail:
-      'CRISPR gene editing, mammalian cell culture and GCP-aligned dermatological studies. I set the data-quality and validation standards that decide whether downstream analysis is worth trusting.',
+      'I do CRISPR gene editing, mammalian cell culture, and dermatological studies to GCP standards. I also set the standards for data quality and validation. These standards make sure that the later analysis is correct.',
   },
   {
     num: '02',
     icon: '🗂️',
-    title: 'Programs that land',
+    title: 'Program delivery',
     detail:
-      'Sprint planning, backlog and dependency management across concurrent programs — keeping milestones honest against the baseline plan rather than against optimism.',
+      'I plan the sprints and manage the backlog and the dependencies for programs that run at the same time. I compare each milestone to the baseline plan.',
   },
   {
     num: '03',
     icon: '📊',
-    title: 'Decision-ready reporting',
+    title: 'Reports for decisions',
     detail:
-      'Dashboards and executive templates that give leadership early visibility into risk. Scientific work is only useful once someone can make a call from it.',
+      'I build dashboards and report templates for managers. These show risks early. Scientific work is only useful when a manager can make a decision from it.',
   },
 ]
 
@@ -95,21 +94,21 @@ export const experience = [
     title: 'Product Manager',
     org: 'D’Amore-McKim AI Strategic Hub (DASH) · Boston, MA',
     detail:
-      'Lead delivery across six concurrent AI-product programs, owning sprint planning, backlog and dependency management. Built the program dashboards and executive reporting templates now used across the hub.',
+      'I lead delivery for six AI product programs at the same time. I own the sprint plan, the backlog, and the dependencies. I also built the program dashboards and the report templates that the hub now uses.',
   },
   {
     year: '2025',
     title: 'Research Associate',
     org: 'Neoclease, Tufts Launchpad Biolabs · Boston, MA',
     detail:
-      'Introduced Jira Kanban to research operations, lifting on-time experiment starts from 68% to 91% and raising lab throughput 34%. Set data-quality standards for AI/ML models on CRISPR cell and gene therapy datasets.',
+      'I introduced Jira Kanban to research operations. On-time experiment starts increased from 68% to 91%, and laboratory output increased by 34%. I also set data quality standards for the AI models that use CRISPR cell and gene therapy data.',
   },
   {
     year: '2024',
     title: 'R&D Associate',
     org: 'Beiersdorf Pvt. Ltd. (NIVEA) · Mumbai, India',
     detail:
-      'Ran three GCP-aligned dermatological efficacy studies (n≈120) measuring TEWL, erythema and pigmentation endpoints, and built the Tableau dashboards that turned raw efficacy data into decision-ready reporting.',
+      'I ran three dermatological efficacy studies to GCP standards, with approximately 120 participants. The studies measured TEWL, erythema, and pigmentation. I built the Tableau dashboards that show the results.',
   },
 ]
 
@@ -120,9 +119,9 @@ export const projects = [
   {
     num: '01',
     name: 'Svastha (HealthVault)',
-    sub: 'Decentralized health-data platform, selected into Harvard Innovation Labs.',
+    sub: 'This is a decentralized health data platform. Harvard Innovation Labs selected it.',
     detail:
-      'Business Operations Lead for an early-stage decentralized health-data startup, earning selection into the Harvard Innovation Labs (Foundry) accelerator. Ran market and competitive analysis to size the opportunity, define target segments and shape the product roadmap.',
+      'I am the Business Operations Lead for an early-stage health data startup. The Harvard Innovation Labs Foundry accelerator selected the company. I did the market and competitor analysis. That analysis set the target segments and the product roadmap.',
     url: 'https://getsvastha.com/',
     urlLabel: 'getsvastha.com',
     tags: ['Go-to-market', 'Strategy', 'Harvard iLab'],
@@ -130,9 +129,9 @@ export const projects = [
   {
     num: '02',
     name: 'The PM Playbook',
-    sub: 'From scientific evidence to product decisions — eight capabilities, written up in full.',
+    sub: 'This playbook shows eight product capabilities, from scientific evidence to product decisions.',
     detail:
-      'Eight capabilities — discover, decide, deliver and the rest — organised by how product decisions actually get made rather than by which project they came from. Built on 4+ concurrent AI products, 400+ delivery tickets governed, and a 111-participant controlled study.',
+      'The playbook has eight capabilities: discover, decide, deliver, and more. The order follows how a team makes product decisions, not the project that each example came from. It uses data from more than 4 AI products and more than 400 delivery tickets. It also uses a controlled study with 111 participants.',
     url: 'https://vanisharma121-arch.github.io/product-playbook/',
     urlLabel: 'Read the playbook',
     tags: ['Program Management', 'Reporting', 'Case Study'],
@@ -220,17 +219,17 @@ export const contactLinks = [
 // ─── ACHIEVEMENTS (gamification) ───
 // Unlocked by exploring the site. Order here is the order shown in the trophy tray.
 export const achievements = [
-  { id: 'arrive',    name: 'First Contact',    hint: 'Land on the site',                    xp: 10, icon: '🚀' },
-  { id: 'approach',  name: 'Methodical',       hint: 'Read how Vani works',                 xp: 15, icon: '🧭' },
-  { id: 'skills',    name: 'Lab Access',       hint: 'Inspect the skill set',               xp: 15, icon: '🧬' },
-  { id: 'experience',name: 'Time Traveller',   hint: 'Walk the full timeline',              xp: 20, icon: '⏳' },
+  { id: 'arrive',    name: 'First Contact',    hint: 'Open the site',                    xp: 10, icon: '🚀' },
+  { id: 'approach',  name: 'Methodical',       hint: 'Read the approach section',                 xp: 15, icon: '🧭' },
+  { id: 'skills',    name: 'Lab Access',       hint: 'Open the skills section',               xp: 15, icon: '🧬' },
+  { id: 'experience',name: 'Time Traveller',   hint: 'Read all of the experience',              xp: 20, icon: '⏳' },
   { id: 'work',      name: 'Case Study',       hint: 'Open a project link',                      xp: 20, icon: '🔍' },
   { id: 'allwork',   name: 'Completionist',    hint: 'Open both project links',                  xp: 30, icon: '🏅' },
-  { id: 'resume',    name: 'Paper Trail',      hint: 'Reach the resume',                    xp: 15, icon: '📄' },
+  { id: 'resume',    name: 'Paper Trail',      hint: 'Open the resume section',                    xp: 15, icon: '📄' },
   { id: 'cv',        name: 'Recruiter Mode',   hint: 'Download the CV',                     xp: 25, icon: '💼' },
   { id: 'playbook',  name: 'Playbook Opened',  hint: 'Open the PM Playbook',                xp: 20, icon: '📘' },
   { id: 'plays',     name: 'Student of the Game', hint: 'Read all six plays',               xp: 30, icon: '🎯' },
-  { id: 'konami',    name: 'Easter Egg',       hint: 'Some secrets are keyed in',           xp: 50, icon: '🥚' },
+  { id: 'konami',    name: 'Easter Egg',       hint: 'Type the classic key sequence',           xp: 50, icon: '🥚' },
 ]
 
 export const LEVELS = [

@@ -23,7 +23,7 @@ export default function Stats() {
         <p className="eyebrow reveal">By the numbers</p>
         <h2 className="h2 reveal">Outcomes, not adjectives.</h2>
         <p className="lede reveal" style={{ marginBottom: 46 }}>
-          Every figure below is drawn straight from the work — measured, reported, and repeatable.
+          I measured and reported each figure below. Each one comes from real work.
         </p>
 
         <div className="stats">

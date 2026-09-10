@@ -12,7 +12,7 @@ export default function Skills() {
         <p className="eyebrow reveal">Skills</p>
         <h2 className="h2 reveal">Four domains, one throughline.</h2>
         <p className="lede reveal" style={{ marginBottom: 46 }}>
-          Delivery, compliance, analytics and the bench — the span is the point.
+          I work in four areas: delivery, compliance, analytics, and the laboratory.
         </p>
 
         <div className="skills-grid">

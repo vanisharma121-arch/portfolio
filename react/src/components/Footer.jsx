@@ -11,7 +11,7 @@ export default function Footer() {
           <a href={`mailto:${profile.contact.email}`}>{profile.contact.email}</a>
         </div>
         <div className="footer__hint">
-          Psst — this page keeps score. There's one badge you can only type your way into.
+          This page records your progress. You can get one badge only from the keyboard.
         </div>
       </div>
     </footer>
