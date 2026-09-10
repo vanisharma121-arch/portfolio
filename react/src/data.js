@@ -11,7 +11,6 @@ export const navLinks = [
   { href: '#skills', label: 'Skills' },
   { href: '#experience', label: 'Experience' },
   { href: '#work', label: 'Work' },
-  { href: '#research', label: 'Research' },
   { href: '#resume', label: 'Resume' },
   { href: 'playbook/', label: 'PM Playbook', external: true },
 ]
@@ -227,32 +226,6 @@ export const hobbies = [
   { icon: '📚', label: 'Reading & Writing' },
   { icon: '✈️', label: 'Travel & Culture' },
 ]
-
-// ─── RESEARCH ───
-// Output from the AI-vs-human grading study run for Essaybot at the
-// D'Amore-McKim AI Strategic Hub. Figures below are read off the charts in
-// public/research/ — don't restate them from memory.
-export const research = {
-  kicker: 'Research',
-  title: 'Does AI grade like a human?',
-  script: 'Essaybot grading study',
-  intro:
-    'I designed and analysed a comparison of AI, human and hybrid grading across two assignment sets and their revisions. The charts below are the analysis output — mean scores, per-grader trends, and where each method gained or lost ground between drafts.',
-  findings: [
-    { label: 'Highest mean score', value: '85.5', context: 'human grading, across all four sets' },
-    { label: 'Largest single gain', value: '+5.8', context: 'human grading, T2 → T2_1' },
-    { label: 'Only decline recorded', value: '−5.8', context: 'AI grading, T1 → T1_1' },
-    { label: 'Hybrid best improvement', value: '+5.5', context: 'T1 → T1_1' },
-  ],
-  charts: [
-    { src: 'research/graph-1.jpg', title: 'Mean scores compared', caption: 'AI vs human vs hybrid across T1, T1_1, T2 and T2_1.' },
-    { src: 'research/graph-2.jpg', title: 'Score changes', caption: 'Direction and size of movement between each draft and its revision.' },
-    { src: 'research/graph-3.jpg', title: 'Trends', caption: 'Per-method trajectory across the four assignment sets.' },
-    { src: 'research/graph-4.jpg', title: 'Improvements and declines', caption: 'Where each grading method gained ground and where it lost it.' },
-    { src: 'research/graph-5.jpg', title: 'Heatmap summary', caption: 'The whole comparison condensed into one grid.' },
-    { src: 'research/graph-6.jpg', title: 'Full dashboard', caption: 'Every view in one sheet, with the key findings called out.' },
-  ],
-}
 
 // ─── LAB / INFRASTRUCTURE IMAGERY ───
 // Used as card visuals so the experience grid shows the real environment
