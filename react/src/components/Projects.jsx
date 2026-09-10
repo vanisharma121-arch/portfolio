@@ -2,8 +2,6 @@ import { useRef } from 'react'
 import { projects } from '../data'
 import { useGame } from '../game/GameContext'
 
-const asset = (file) => `${import.meta.env.BASE_URL}${file}`
-
 export default function Projects() {
   const { unlock } = useGame()
   const visited = useRef(new Set())
@@ -31,9 +29,7 @@ export default function Projects() {
             <a
               className="project reveal"
               key={p.num}
-              // Internal pages still need the deployed base path; both open in
-              // a new tab so the portfolio stays put behind them.
-              href={p.urlInternal ? asset(p.url) : p.url}
+              href={p.url}
               target="_blank"
               rel="noreferrer"
               onClick={() => onVisit(p.num)}

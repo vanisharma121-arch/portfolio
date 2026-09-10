@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { navLinks, profile } from '../data'
 import { useScrolled } from '../hooks/useScrollEffects'
 
-const asset = (file) => `${import.meta.env.BASE_URL}${file}`
-
 export default function Nav() {
   const scrolled = useScrolled(20)
   const [open, setOpen] = useState(false)
@@ -19,10 +17,12 @@ export default function Nav() {
           {navLinks.map((l) => (
             <a
               key={l.href}
-              // External links point at other documents in the build, so they
-              // need the deployed base path; in-page anchors must not get it.
-              href={l.external ? asset(l.href) : l.href}
+              href={l.href}
               className={`nav__link${l.external ? ' nav__link--cta' : ''}`}
+              // `external` now means a different site, so open it in a new tab
+              // and leave the portfolio behind it.
+              target={l.external ? '_blank' : undefined}
+              rel={l.external ? 'noreferrer' : undefined}
               onClick={() => setOpen(false)}
             >
               {l.label}

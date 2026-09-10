@@ -12,7 +12,7 @@ export const navLinks = [
   { href: '#experience', label: 'Experience' },
   { href: '#work', label: 'Work' },
   { href: '#resume', label: 'Resume' },
-  { href: 'playbook/', label: 'PM Playbook', external: true },
+  { href: 'https://vanisharma121-arch.github.io/product-playbook/', label: 'PM Playbook', external: true },
 ]
 
 // ─── HERO ───
@@ -130,13 +130,10 @@ export const projects = [
   {
     num: '02',
     name: 'The PM Playbook',
-    sub: 'How I run a multi-product sprint programme, written up in full.',
+    sub: 'From scientific evidence to product decisions — eight capabilities, written up in full.',
     detail:
-      'Six plays and five field notes drawn from running four AI products through an eight-week sprint programme at the D’Amore-McKim AI Strategic Hub — including the Press-Bot case file, where three sprints produced zero delivery and the fix was a resourcing escalation rather than a replan.',
-    // Internal page in this same build, so it resolves against BASE_URL and
-    // opens in the current tab rather than a new one.
-    url: 'playbook/',
-    urlInternal: true,
+      'Eight capabilities — discover, decide, deliver and the rest — organised by how product decisions actually get made rather than by which project they came from. Built on 4+ concurrent AI products, 400+ delivery tickets governed, and a 111-participant controlled study.',
+    url: 'https://vanisharma121-arch.github.io/product-playbook/',
     urlLabel: 'Read the playbook',
     tags: ['Program Management', 'Reporting', 'Case Study'],
   },
