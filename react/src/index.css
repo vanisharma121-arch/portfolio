@@ -7,36 +7,54 @@
    ========================================================================= */
 
 :root {
-  /* Apple-ish neutrals */
-  --black:      #000000;
-  --near-black: #1d1d1f;
-  --white:      #ffffff;
-  --gray-bg:    #f5f5f7;
-  --gray-text:  #6e6e73;
-  --gray-line:  #d2d2d7;
+  /* Palette lifted from the product-playbook site so the two read as one
+     brand. Names and values match its :root exactly. */
+  --paper:     #FBFAF7;
+  --card-w:    #FFFFFF;
+  --ink:       #12141C;
+  --body:      #3A3F4C;
+  --mute:      #7C8191;
+  --line-1:    #E4E2DB;
+  --line-2:    #CDCAC1;
 
-  /* Accents */
-  --blue:       #0071e3;
-  --blue-hover: #0077ed;
-  --xp-a:       #6ee7f9;
-  --xp-b:       #a78bfa;
-  --gold:       #f5b301;
+  --cobalt:    #1B4FD8;
+  --cobalt-bg: #EBF0FE;
+  --violet:    #5E33C4;
+  --violet-bg: #F1ECFD;
+  --green:     #1F6B4A;
+  --green-bg:  #E8F3ED;
+  --amber:     #8A5B0B;
+  --amber-bg:  #FBF0DA;
+  --red:       #A32A2A;
+  --red-bg:    #FAEAEA;
+
+  /* Kept so existing rules resolve; mapped onto the palette above. */
+  --black:      var(--ink);
+  --near-black: var(--ink);
+  --white:      var(--card-w);
+  --gray-bg:    var(--paper);
+  --gray-text:  var(--mute);
+  --gray-line:  var(--line-1);
+  --blue:       var(--cobalt);
+  --blue-hover: #1846C0;
+  --xp-a:       var(--cobalt);
+  --xp-b:       var(--violet);
+  --gold:       var(--amber);
 
   /* Per-section theming: components read these, sections redefine them. */
-  --bg:      var(--white);
-  --fg:      var(--near-black);
-  --fg-dim:  var(--gray-text);
-  --line:    var(--gray-line);
-  --card:    var(--gray-bg);
+  --bg:      var(--paper);
+  --fg:      var(--ink);
+  --fg-dim:  var(--body);
+  --line:    var(--line-1);
+  --card:    var(--card-w);
 
   --radius:    18px;
   --radius-lg: 28px;
   --pill:      980px;
 
-  --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter',
-          'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  --shell: 1024px;   /* Apple's content column */
+  --shell: 1024px;
   --ease:  cubic-bezier(0.28, 0.11, 0.32, 1);
 }
 
@@ -53,12 +71,13 @@ html {
 
 body {
   margin: 0;
+  background: var(--paper);
   font-family: var(--sans);
   font-size: 17px;
   line-height: 1.47;
   letter-spacing: -0.012em;
-  color: var(--near-black);
-  background: var(--white);
+  color: var(--body);
+  background: var(--paper);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -83,15 +102,17 @@ button { font: inherit; color: inherit; }
 }
 
 /* Dark full-bleed sections, Apple's alternating rhythm. */
+/* Formerly inverted; the playbook palette is light throughout, so these now
+   read as white panels against the warm paper rather than black ones. */
 .section--dark {
-  --bg: var(--black);
-  --fg: var(--white);
-  --fg-dim: rgba(255, 255, 255, 0.62);
-  --line: rgba(255, 255, 255, 0.16);
-  --card: #1d1d1f;
+  --bg: var(--card-w);
+  --fg: var(--ink);
+  --fg-dim: var(--body);
+  --line: var(--line-1);
+  --card: var(--paper);
 }
 
-.section--gray { --bg: var(--gray-bg); --card: var(--white); }
+.section--gray { --bg: var(--paper); --card: var(--card-w); }
 
 .shell {
   width: min(100% - 44px, var(--shell));
@@ -193,16 +214,16 @@ button { font: inherit; color: inherit; }
   height: 52px;
   display: flex;
   align-items: center;
-  color: #fff;
-  background: rgba(22, 22, 23, 0.72);
+  color: var(--ink);
+  background: rgba(251, 250, 247, 0.80);
   border-bottom: 1px solid transparent;
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 .nav.is-scrolled {
-  background: rgba(22, 22, 23, 0.86);
-  border-bottom-color: rgba(255, 255, 255, 0.12);
+  background: rgba(251, 250, 247, 0.94);
+  border-bottom-color: var(--line-1);
 }
 
 .nav__inner {
@@ -224,9 +245,9 @@ button { font: inherit; color: inherit; }
 
 .nav__link {
   font-size: 13px;
-  color: #fff;
-  opacity: 0.82;
-  transition: opacity 0.18s var(--ease);
+  color: var(--ink);
+  opacity: 0.78;
+  transition: opacity 0.18s var(--ease), color 0.18s var(--ease);
 }
 .nav__link:hover { opacity: 1; }
 
@@ -240,8 +261,8 @@ button { font: inherit; color: inherit; }
   place-items: center;
   text-align: center;
   padding: 96px 0 56px;
-  background: var(--black);
-  color: var(--white);
+  background: var(--paper);
+  color: var(--ink);
   position: relative;
   overflow: hidden;
 }
@@ -256,8 +277,8 @@ button { font: inherit; color: inherit; }
   left: 50%;
   translate: -50% 0;
   background:
-    radial-gradient(closest-side, rgba(110, 231, 249, 0.16), transparent 70%),
-    radial-gradient(closest-side, rgba(167, 139, 250, 0.14), transparent 70%);
+    radial-gradient(closest-side, rgba(27, 79, 216, 0.10), transparent 70%),
+    radial-gradient(closest-side, rgba(94, 51, 196, 0.08), transparent 70%);
   background-position: 30% 40%, 70% 55%;
   background-size: 55% 55%, 50% 50%;
   background-repeat: no-repeat;
@@ -280,9 +301,9 @@ button { font: inherit; color: inherit; }
   font-weight: 500;
   padding: 7px 15px;
   border-radius: var(--pill);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.07);
-  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--line-2);
+  background: var(--cobalt-bg);
+  color: var(--cobalt);
   margin-bottom: 26px;
 }
 
@@ -292,7 +313,7 @@ button { font: inherit; color: inherit; }
   line-height: 0.98;
   letter-spacing: -0.035em;
   margin: 0 0 18px;
-  background: linear-gradient(180deg, #fff 30%, rgba(255, 255, 255, 0.62));
+  background: linear-gradient(180deg, var(--ink) 40%, #454A59);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -302,13 +323,13 @@ button { font: inherit; color: inherit; }
   font-size: clamp(19px, 2.6vw, 27px);
   font-weight: 500;
   letter-spacing: -0.018em;
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--cobalt);
   margin: 0 0 16px;
 }
 
 .hero__sub {
   font-size: clamp(16px, 1.8vw, 19px);
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--body);
   max-width: 58ch;
   margin: 0 auto 34px;
   line-height: 1.5;
@@ -316,8 +337,8 @@ button { font: inherit; color: inherit; }
 
 .hero__cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-.hero .btn--ghost { color: #fff; border-color: rgba(255, 255, 255, 0.4); }
-.hero .btn--ghost:hover { background: #fff; color: var(--black); }
+.hero .btn--ghost { color: var(--ink); border-color: var(--line-2); }
+.hero .btn--ghost:hover { background: var(--ink); color: var(--paper); }
 
 .hero__scroll {
   position: absolute;
@@ -325,7 +346,7 @@ button { font: inherit; color: inherit; }
   left: 50%;
   translate: -50% 0;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--mute);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -383,7 +404,7 @@ button { font: inherit; color: inherit; }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 18px 44px rgba(18, 20, 28, 0.09);
 }
 
 .card__icon { font-size: 32px; margin-bottom: 16px; }
@@ -507,8 +528,8 @@ button { font: inherit; color: inherit; }
 
 .project:hover {
   transform: translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.34);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.28);
+  border-color: var(--cobalt);
+  box-shadow: 0 20px 48px rgba(18, 20, 28, 0.10);
 }
 
 .project__top { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
@@ -623,15 +644,15 @@ a.contact-card:hover { transform: translateY(-4px); border-color: var(--blue); }
 /* ── Footer ──────────────────────────────────────────────────────────────── */
 
 .footer {
-  background: var(--black);
-  color: rgba(255, 255, 255, 0.55);
+  background: var(--ink);
+  color: rgba(251, 250, 247, 0.62);
   padding: 42px 0;
   font-size: 13px;
   text-align: center;
 }
-.footer a { color: rgba(255, 255, 255, 0.8); }
-.footer a:hover { color: #fff; }
-.footer__hint { margin-top: 10px; font-size: 12px; color: rgba(255, 255, 255, 0.32); }
+.footer a { color: rgba(251, 250, 247, 0.88); }
+.footer a:hover { color: var(--card-w); }
+.footer__hint { margin-top: 10px; font-size: 12px; color: rgba(251, 250, 247, 0.38); }
 
 /* ============================================================================
    Gamification layer
@@ -654,8 +675,8 @@ a.contact-card:hover { transform: translateY(-4px); border-color: var(--blue); }
   gap: 11px;
   padding: 9px 15px 9px 11px;
   border-radius: var(--pill);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(28, 28, 30, 0.82);
+  border: 1px solid var(--ink);
+  background: rgba(18, 20, 28, 0.94);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   color: #fff;
@@ -666,20 +687,20 @@ a.contact-card:hover { transform: translateY(-4px); border-color: var(--blue); }
 .hud__btn:hover { transform: translateY(-2px); }
 
 .hud__level { font-size: 13px; font-weight: 600; letter-spacing: -0.01em; }
-.hud__xp { font-size: 11px; color: rgba(255, 255, 255, 0.55); }
+.hud__xp { font-size: 11px; color: rgba(251, 250, 247, 0.6); }
 
 .hud__ring { position: relative; width: 34px; height: 34px; flex: none; }
 .hud__ring svg { transform: rotate(-90deg); }
 .hud__ring circle { fill: none; stroke-width: 3.5; stroke-linecap: round; }
-.hud__ring .track { stroke: rgba(255, 255, 255, 0.16); }
+.hud__ring .track { stroke: rgba(251, 250, 247, 0.22); }
 .hud__ring .fill { stroke: url(#xpGradient); transition: stroke-dashoffset 0.7s var(--ease); }
 
 /* Trophy tray */
 .tray {
   width: min(88vw, 330px);
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(28, 28, 30, 0.92);
+  border: 1px solid var(--ink);
+  background: rgba(18, 20, 28, 0.97);
   backdrop-filter: saturate(180%) blur(24px);
   -webkit-backdrop-filter: saturate(180%) blur(24px);
   color: #fff;
@@ -695,7 +716,7 @@ a.contact-card:hover { transform: translateY(-4px); border-color: var(--blue); }
 
 .tray__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
 .tray__title { font-size: 15px; font-weight: 600; }
-.tray__count { font-size: 12px; color: rgba(255, 255, 255, 0.5); }
+.tray__count { font-size: 12px; color: rgba(251, 250, 247, 0.55); }
 
 .tray__list { display: grid; gap: 7px; max-height: 46vh; overflow-y: auto; }
 
@@ -705,7 +726,7 @@ a.contact-card:hover { transform: translateY(-4px); border-color: var(--blue); }
   gap: 11px;
   padding: 9px 11px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(251, 250, 247, 0.06);
   font-size: 13px;
 }
 
@@ -713,7 +734,7 @@ a.contact-card:hover { transform: translateY(-4px); border-color: var(--blue); }
 .trophy__icon { font-size: 18px; filter: grayscale(1); }
 .trophy:not(.is-locked) .trophy__icon { filter: none; }
 .trophy__name { font-weight: 600; }
-.trophy__hint { font-size: 11.5px; color: rgba(255, 255, 255, 0.5); }
+.trophy__hint { font-size: 11.5px; color: rgba(251, 250, 247, 0.55); }
 .trophy__xp { margin-left: auto; font-size: 11px; color: var(--gold); font-weight: 600; }
 
 .tray__reset {
@@ -721,13 +742,13 @@ a.contact-card:hover { transform: translateY(-4px); border-color: var(--blue); }
   margin-top: 13px;
   padding: 9px;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(251, 250, 247, 0.24);
   background: none;
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(251, 250, 247, 0.68);
   font-size: 12px;
   cursor: pointer;
 }
-.tray__reset:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.tray__reset:hover { background: var(--paper); color: var(--ink); }
 
 /* Toasts */
 .toasts {
@@ -748,8 +769,8 @@ a.contact-card:hover { transform: translateY(-4px); border-color: var(--blue); }
   gap: 13px;
   padding: 12px 20px 12px 15px;
   border-radius: var(--pill);
-  background: rgba(28, 28, 30, 0.93);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(18, 20, 28, 0.97);
+  border: 1px solid var(--ink);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   color: #fff;
@@ -775,10 +796,10 @@ a.contact-card:hover { transform: translateY(-4px); border-color: var(--blue); }
     inset: 52px 0 auto 0;
     flex-direction: column;
     gap: 0;
-    background: rgba(22, 22, 23, 0.97);
+    background: var(--paper);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid var(--line-1);
     padding: 6px 22px 16px;
     display: none;
   }
@@ -834,9 +855,10 @@ a.contact-card:hover { transform: translateY(-4px); border-color: var(--blue); }
   opacity: 1;
   padding: 5px 13px;
   border-radius: var(--pill);
-  background: rgba(255, 255, 255, 0.14);
+  background: var(--cobalt-bg);
+  color: var(--cobalt);
 }
-.nav__link--cta:hover { background: rgba(255, 255, 255, 0.24); }
+.nav__link--cta:hover { background: var(--cobalt); color: var(--paper); }
 
 /* Playbook hero runs shorter than the homepage's full-height hero. */
 .hero--playbook { min-height: auto; padding: clamp(140px, 20vh, 200px) 0 clamp(96px, 14vh, 140px); }
@@ -868,7 +890,7 @@ a.contact-card:hover { transform: translateY(-4px); border-color: var(--blue); }
 .play:hover {
   transform: translateY(-4px);
   border-color: var(--blue);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 18px 44px rgba(18, 20, 28, 0.09);
 }
 
 .play__head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
