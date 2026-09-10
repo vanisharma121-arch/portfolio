@@ -5,7 +5,8 @@ export default function FieldNotes() {
     <section className="section section--dark" id="notes">
       <div className="shell">
         <p className="eyebrow reveal">Field notes</p>
-        <h2 className="h2 reveal">Five things the reports taught me.</h2>
+        <div className="big reveal">Five things the reports taught me.</div>
+        <div className="script reveal" style={{ transitionDelay: '.08s', marginBottom: '1.4rem' }}>Less method, more scar tissue</div>
         <p className="lede reveal" style={{ marginBottom: 46 }}>
           Less methodology, more scar tissue.
         </p>
