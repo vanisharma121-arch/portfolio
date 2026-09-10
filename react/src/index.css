@@ -385,38 +385,81 @@ ul { list-style: none; margin: 0; padding: 0; }
   padding: 4px 10px;
 }
 
-/* ── Timeline ────────────────────────────────────────────────────────────── */
+/* ── Experience: connection trail ────────────────────────────────────────
+   A central spine with entries alternating left and right. Each node is a
+   square (no radius in this system) sitting on the spine, joined to its card
+   by a connector hairline — the "connection" the trail is named for. */
 
-.timeline { margin-top: 30px; border-top: 1px solid var(--line); }
-
-.tl-item { padding: 24px 0; border-bottom: 1px solid var(--line); }
-
-.tl-year {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  background: var(--cobalt-bg);
-  color: var(--cobalt);
-  display: inline-block;
-  padding: 4px 10px;
-  margin-bottom: 10px;
+.trail {
+  position: relative;
+  margin-top: 34px;
+  padding: 6px 0;
 }
 
-.tl-title { font-family: var(--serif); font-weight: 500; font-size: 20px; line-height: 1.35; color: var(--ink); margin-bottom: 3px; }
-
-.tl-org {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--mute);
-  margin-bottom: 10px;
+/* The spine. */
+.trail::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--line);
+  transform: translateX(-0.5px);
 }
 
-.tl-detail { font-size: 14.5px; line-height: 1.55; max-width: 58ch; color: var(--body); margin: 0; }
+.trail__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 14px 0;
+}
 
-/* ── Projects ────────────────────────────────────────────────────────────── */
+/* Node on the spine. */
+.trail__node {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  translate: -50% 0;
+  background: var(--paper);
+  border: 1px solid var(--line2);
+  z-index: 1;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.trail__item:hover .trail__node { background: var(--cobalt); border-color: var(--cobalt); }
+
+.trail__card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 20px 20px 22px;
+  transition: border-color 0.2s;
+}
+
+.trail__item:hover .trail__card { border-color: var(--ink); }
+
+/* Connector from spine to card. */
+.trail__card::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  width: 28px;
+  height: 1px;
+  background: var(--line);
+}
+
+.is-left .trail__card  { grid-column: 1; margin-right: 34px; }
+.is-left .trail__card::before  { right: -28px; }
+
+.is-right .trail__card { grid-column: 2; margin-left: 34px; }
+.is-right .trail__card::before { left: -28px; }
+
+.trail .tl-detail { max-width: none; }
+
+/* ── Projects ──/* ── Projects ────────────────────────────────────────────────────────────── */
 
 .project {
   display: block;
@@ -729,6 +772,12 @@ a.contact-card:hover { background: var(--cobalt-bg); }
 
   .skills-grid { grid-template-columns: 1fr; }
   .edu-item { grid-template-columns: 1fr; gap: 6px; }
+
+  .trail::before { left: 4px; }
+  .trail__item { grid-template-columns: 1fr; }
+  .trail__node { left: 4px; }
+  .is-left .trail__card, .is-right .trail__card { grid-column: 1; margin: 0 0 0 30px; }
+  .is-left .trail__card::before, .is-right .trail__card::before { left: -26px; right: auto; width: 26px; }
   .note { grid-template-columns: 40px 1fr; gap: 12px; }
   .note__num { font-size: 24px; }
   .hud { right: 14px; bottom: 14px; }
