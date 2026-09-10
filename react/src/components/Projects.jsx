@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef } from 'react'
 import { projects } from '../data'
 import { useGame } from '../game/GameContext'
 
@@ -6,20 +6,15 @@ const asset = (file) => `${import.meta.env.BASE_URL}${file}`
 
 export default function Projects() {
   const { unlock } = useGame()
-  const [opened, setOpened] = useState([])
+  const visited = useRef(new Set())
 
-  // Next state is computed outside the updater: unlock() sets state on the
-  // provider, and calling it from inside a setState callback would be a
-  // state update during render.
-  const toggle = (num) => {
-    const isOpen = opened.includes(num)
-    const next = isOpen ? opened.filter((n) => n !== num) : [...opened, num]
-    setOpened(next)
-
-    if (!isOpen) {
-      unlock('work')
-      if (next.length === projects.length) unlock('allwork')
-    }
+  // Every card opens in a new tab, so the visitor stays on this page and we
+  // can still tell when they've been through both.
+  const onVisit = (num) => {
+    if (visited.current.has(num)) return
+    visited.current.add(num)
+    unlock('work')
+    if (visited.current.size === projects.length) unlock('allwork')
   }
 
   return (
@@ -28,56 +23,43 @@ export default function Projects() {
         <p className="eyebrow reveal">Selected work</p>
         <h2 className="h2 reveal">Two projects worth opening.</h2>
         <p className="lede reveal" style={{ marginBottom: 46 }}>
-          Tap any card to read what actually happened.
+          Both are live — click either card to open it.
         </p>
 
         <div className="grid grid--2">
-          {projects.map((p) => {
-            const isOpen = opened.includes(p.num)
-            return (
-              // An <article> wrapper, not a <button>: projects with a live site
-              // need a real <a>, and an anchor nested inside a button is
-              // invalid HTML. The toggle is its own button alongside it.
-              <article className={`project reveal${isOpen ? ' is-open' : ''}`} key={p.num}>
-                <button
-                  className="project__head"
-                  onClick={() => toggle(p.num)}
-                  aria-expanded={isOpen}
-                >
-                  <span className="project__top">
-                    <span className="project__num">{p.num}</span>
-                    <span className="project__open" aria-hidden="true">+</span>
-                  </span>
+          {projects.map((p) => (
+            <a
+              className="project reveal"
+              key={p.num}
+              // Internal pages still need the deployed base path; both open in
+              // a new tab so the portfolio stays put behind them.
+              href={p.urlInternal ? asset(p.url) : p.url}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => onVisit(p.num)}
+            >
+              <span className="project__top">
+                <span className="project__num">{p.num}</span>
+                <span className="project__open" aria-hidden="true">↗</span>
+              </span>
 
-                  <span className="project__name">{p.name}</span>
-                  <span className="project__sub">{p.sub}</span>
-                </button>
+              <span className="project__name">{p.name}</span>
+              <span className="project__sub">{p.sub}</span>
 
-                {p.url && (
-                  <a
-                    className="project__link"
-                    href={p.urlInternal ? asset(p.url) : p.url}
-                    target={p.urlInternal ? undefined : '_blank'}
-                    rel={p.urlInternal ? undefined : 'noreferrer'}
-                  >
-                    {p.urlLabel ?? 'Visit site'}
-                    <span aria-hidden="true">{p.urlInternal ? ' →' : ' ↗'}</span>
-                  </a>
-                )}
+              <span className="project__detail">{p.detail}</span>
 
-                <div className="project__detail">
-                  <div>
-                    <p>{p.detail}</p>
-                    <div className="project__tags">
-                      {p.tags.map((t) => (
-                        <span className="tag" key={t}>{t}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </article>
-            )
-          })}
+              <span className="project__tags">
+                {p.tags.map((t) => (
+                  <span className="tag" key={t}>{t}</span>
+                ))}
+              </span>
+
+              <span className="project__cta">
+                {p.urlLabel ?? 'Visit site'}
+                <span aria-hidden="true"> ↗</span>
+              </span>
+            </a>
+          ))}
         </div>
       </div>
     </section>

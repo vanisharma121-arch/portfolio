@@ -492,39 +492,18 @@ button { font: inherit; color: inherit; }
 
 /* ── Projects ────────────────────────────────────────────────────────────── */
 
+/* The whole card is a link that opens in a new tab; everything inside is a
+   span, so each block-level piece is declared explicitly. */
 .project {
+  display: block;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 32px 30px;
+  color: inherit;
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease),
               border-color 0.35s var(--ease);
 }
-
-/* The expand control fills the card; the external link sits outside it so it
-   can be a real anchor. */
-.project__head {
-  display: block;
-  width: 100%;
-  text-align: left;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: inherit;
-}
-
-.project__link {
-  display: inline-flex;
-  align-items: center;
-  margin-top: 14px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--xp-a);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
-}
-.project__link:hover { border-bottom-color: currentColor; }
 
 .project:hover {
   transform: translateY(-5px);
@@ -542,30 +521,30 @@ button { font: inherit; color: inherit; }
 }
 
 .project__open {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--fg-dim);
-  transition: transform 0.3s var(--ease);
+  transition: transform 0.3s var(--ease), color 0.3s var(--ease);
 }
-.project.is-open .project__open { transform: rotate(45deg); }
+.project:hover .project__open { transform: translate(3px, -3px); color: var(--xp-a); }
 
 .project__name { display: block; font-size: 25px; font-weight: 600; letter-spacing: -0.02em; margin: 10px 0 8px; }
-.project__sub { display: block; color: var(--fg-dim); margin: 0; }
+.project__sub { display: block; color: var(--fg-dim); }
 
-/* Expanding detail panel — animated via grid-template-rows so it stays fluid. */
-.project__detail {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.4s var(--ease), opacity 0.3s var(--ease),
-              margin-top 0.4s var(--ease);
-  opacity: 0;
+.project__detail { display: block; margin-top: 16px; color: var(--fg-dim); font-size: 15px; line-height: 1.6; }
+
+.project__cta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--xp-a);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s var(--ease);
 }
+.project:hover .project__cta { border-bottom-color: currentColor; }
 
-.project.is-open .project__detail { grid-template-rows: 1fr; opacity: 1; margin-top: 16px; }
-
-.project__detail > div { overflow: hidden; }
-.project__detail p { margin: 0 0 14px; color: var(--fg-dim); }
-
-.project__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.project__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 
 .tag {
   font-size: 12px;
