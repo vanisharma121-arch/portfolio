@@ -199,7 +199,6 @@ export const skillChips = [
 export const languages = [
   { name: 'English', level: 'Fluent' },
   { name: 'Hindi', level: 'Native' },
-  { name: 'Punjabi', level: 'Conversational' },
 ]
 
 // ─── HOBBIES & INTERESTS ───
