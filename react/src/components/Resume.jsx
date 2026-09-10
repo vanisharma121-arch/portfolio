@@ -1,4 +1,4 @@
-import { education, hobbies, languages, profile } from '../data'
+import { contactLinks, education, hobbies, languages, profile } from '../data'
 import { useGame } from '../game/GameContext'
 import { useSectionReached } from '../hooks/useScrollEffects'
 import PhotoFrame from './PhotoFrame'
@@ -14,6 +14,27 @@ export default function Resume() {
       <div className="shell">
         <p className="eyebrow reveal">Resume</p>
         <h2 className="h2 reveal">The short version.</h2>
+
+        {/* Contact details sit at the top, the way they would on the CV itself. */}
+        <ul className="resume-contact reveal">
+          {contactLinks.map((c) => (
+            <li className="resume-contact__item" key={c.label}>
+              <span className="resume-contact__label">{c.label}</span>
+              {c.href ? (
+                <a
+                  className="resume-contact__value"
+                  href={c.href}
+                  target={c.href.startsWith('http') ? '_blank' : undefined}
+                  rel={c.href.startsWith('http') ? 'noreferrer' : undefined}
+                >
+                  {c.value}
+                </a>
+              ) : (
+                <span className="resume-contact__value">{c.value}</span>
+              )}
+            </li>
+          ))}
+        </ul>
 
         <div className="grid grid--2" style={{ alignItems: 'start', marginTop: 40 }}>
           <div className="reveal">
