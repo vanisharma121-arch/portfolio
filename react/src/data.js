@@ -20,18 +20,15 @@ export const profile = {
   name: 'Vani Sharma',
   firstName: 'Vani',
   tagline: 'Product & Program Management · Life Sciences & Biotech',
-  headline: 'Vani\nSharma',
-  script: 'Life sciences strategist.',
-  quote:
-    'The desire to build something at the intersection of biology and intelligence drives everything I do.',
-  navMid: 'Product & Program Management',
-  navYear: '2026',
+  headline: 'Science, shipped.',
+  subhead:
+    'Product and program manager pairing wet-lab R&D — CRISPR, dermatological clinical studies — with the delivery of AI-powered life-sciences tools. I move programs from stakeholder requirements to launch, and turn scientific work into decision-ready reporting.',
   bio: 'MS Biotechnology candidate at Northeastern University and Product Manager at the D’Amore-McKim AI Strategic Hub, where I lead delivery across six concurrent AI-product programs. My background runs from CRISPR and mammalian cell culture to GCP-aligned clinical studies — which is what lets me sit between the science and the schedule.',
   linkedin: 'linkedin.com/in/vanisharma',
   linkedinUrl: 'https://www.linkedin.com/in/vanisharma',
   badge: 'MS Biotech · Dec 2026',
   cv: 'Vani_Sharma_CV.pdf',
-  photo: 'vani.jpg',
+  photo: 'photo.jpg',
   contact: {
     location: 'Boston, MA',
     email: 'sharma.vani1@northeastern.edu',
@@ -224,15 +221,6 @@ export const hobbies = [
   { icon: '📚', label: 'Reading & Writing' },
   { icon: '✈️', label: 'Travel & Culture' },
 ]
-
-// ─── LAB / INFRASTRUCTURE IMAGERY ───
-// Used as card visuals so the experience grid shows the real environment
-// rather than a CSS pattern.
-export const labPhotos = {
-  gpu: 'lab/gpu-rig.jpg',
-  build: 'lab/build.jpg',
-  bench: 'lab/bench.jpg',
-}
 
 // ─── CONTACT ───
 export const contactLinks = [

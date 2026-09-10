@@ -2,35 +2,29 @@ import { howCards } from '../data'
 import { useGame } from '../game/GameContext'
 import { useSectionReached } from '../hooks/useScrollEffects'
 
-/** Photo-collage grid beside a checklist — the design's "strengths" layout. */
 export default function HowIWork() {
   const { unlock } = useGame()
   const ref = useSectionReached(() => unlock('approach'))
 
   return (
-    <section className="split split--46" id="approach" ref={ref}>
-      <div className="collage" aria-hidden="true">
-        {howCards.slice(0, 4).map((c, i) => (
-          <div className="collage__cell" key={c.num}>{c.icon}</div>
-        ))}
-        {howCards.length < 4 && <div className="collage__cell">⚗️</div>}
-      </div>
+    <section className="section" id="approach" ref={ref}>
+      <div className="shell">
+        <p className="eyebrow reveal">My approach</p>
+        <h2 className="h2 reveal">Three ways I create impact.</h2>
+        <p className="lede reveal" style={{ marginBottom: 46 }}>
+          The same discipline runs from the lab bench to the delivery plan.
+        </p>
 
-      <div className="panel">
-        <div className="big reveal">My<br />approach</div>
-        <div className="script reveal" style={{ transitionDelay: '.08s' }}>What sets me apart</div>
-
-        <ul className="str-list">
-          {howCards.map((c, i) => (
-            <li className="str-item reveal" key={c.num} style={{ transitionDelay: `${0.14 + i * 0.06}s` }}>
-              <span className="str-chk" aria-hidden="true">✓</span>
-              <div>
-                <div className="str-name">{c.title}</div>
-                <div className="str-desc">{c.detail}</div>
-              </div>
-            </li>
+        <div className="grid grid--3">
+          {howCards.map((c) => (
+            <article className="card reveal" key={c.num}>
+              <div className="card__icon" aria-hidden="true">{c.icon}</div>
+              <div className="card__num">{c.num}</div>
+              <h3 className="h3">{c.title}</h3>
+              <p className="card__body">{c.detail}</p>
+            </article>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   )

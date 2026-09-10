@@ -5,8 +5,7 @@ export default function CaseFile() {
     <section className="section" id="case">
       <div className="shell shell--narrow">
         <p className="eyebrow reveal">{caseFile.label}</p>
-        <div className="big reveal">{caseFile.title}</div>
-        <div className="script reveal" style={{ transitionDelay: '.08s' }}>When nothing shipped</div>
+        <h2 className="h2 reveal">{caseFile.title}</h2>
 
         <div className="case">
           {caseFile.body.map((para, i) => (

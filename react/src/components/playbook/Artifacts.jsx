@@ -5,8 +5,7 @@ export default function Artifacts() {
     <section className="section section--gray" id="artifacts">
       <div className="shell">
         <p className="eyebrow reveal">Artifacts</p>
-        <div className="big reveal">What I actually produced.</div>
-        <div className="script reveal" style={{ transitionDelay: '.08s', marginBottom: '1.4rem' }}>The paper trail</div>
+        <h2 className="h2 reveal">What I actually produced.</h2>
         <p className="lede reveal" style={{ marginBottom: 46 }}>
           The documents the plays above came out of.
         </p>

@@ -8,8 +8,7 @@ export default function Faq() {
     <section className="section" id="faq">
       <div className="shell shell--narrow">
         <p className="eyebrow reveal">FAQ</p>
-        <div className="big reveal">Questions I get asked.</div>
-        <div className="script reveal" style={{ transitionDelay: '.08s', marginBottom: '1.4rem' }}>Straight answers</div>
+        <h2 className="h2 reveal">Questions I get asked.</h2>
 
         <div className="faq">
           {faqs.map((f, i) => {

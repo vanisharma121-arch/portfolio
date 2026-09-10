@@ -1,43 +1,39 @@
 import { contactLinks, profile } from '../data'
 
-const asset = (file) => `${import.meta.env.BASE_URL}${file}`
-
 export default function Contact() {
   return (
-    <section className="split split--40" id="contact">
-      <div className="photo-panel">
-        <img src={asset(profile.photo)} alt="" style={{ objectPosition: 'center 30%' }} />
-      </div>
+    <section className="section section--dark" id="contact">
+      <div className="shell">
+        <p className="eyebrow reveal">Contact</p>
+        <h2 className="h2 reveal">Let&rsquo;s get something shipped.</h2>
+        <p className="lede reveal">
+          Open to product and program management roles across life sciences and biotech, from {profile.contact.location}.
+        </p>
 
-      <div className="panel">
-        <div className="ct-big reveal">Let&rsquo;s work<br />together</div>
-        <div className="script reveal" style={{ transitionDelay: '.1s' }}>Get in touch</div>
-
-        <div className="ct-links">
-          {contactLinks.map((c, i) => {
+        <div className="contact-grid">
+          {contactLinks.map((c) => {
             const inner = (
               <>
-                <span className="ct-link__ico" aria-hidden="true">{c.icon}</span>
-                {c.value}
+                <span className="contact-card__icon" aria-hidden="true">{c.icon}</span>
+                <span>
+                  <span className="contact-card__label">{c.label}</span>
+                  <span className="contact-card__value" style={{ display: 'block' }}>{c.value}</span>
+                </span>
               </>
             )
-            const style = { transitionDelay: `${0.18 + i * 0.06}s` }
 
             return c.href ? (
               <a
-                className="ct-link reveal"
+                className="contact-card reveal"
                 key={c.label}
                 href={c.href}
-                style={style}
                 target={c.href.startsWith('http') ? '_blank' : undefined}
                 rel={c.href.startsWith('http') ? 'noreferrer' : undefined}
               >
                 {inner}
               </a>
             ) : (
-              <div className="ct-link reveal" key={c.label} style={{ ...style, cursor: 'default' }}>
-                {inner}
-              </div>
+              <div className="contact-card reveal" key={c.label}>{inner}</div>
             )
           })}
         </div>

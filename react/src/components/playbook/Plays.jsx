@@ -20,8 +20,7 @@ export default function Plays() {
     <section className="section" id="plays">
       <div className="shell">
         <p className="eyebrow reveal">What&rsquo;s inside</p>
-        <div className="big reveal">Six plays.</div>
-        <div className="script reveal" style={{ transitionDelay: '.08s', marginBottom: '1.4rem' }}>Earned on a real programme</div>
+        <h2 className="h2 reveal">Six plays.</h2>
         <p className="lede reveal" style={{ marginBottom: 46 }}>
           Each one earned on a real programme. Open a play to see the evidence behind it.
         </p>

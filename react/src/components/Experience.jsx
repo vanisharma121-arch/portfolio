@@ -1,54 +1,38 @@
-import { experience, labPhotos } from '../data'
+import { experience, experienceChips } from '../data'
 import { useGame } from '../game/GameContext'
 import { useSectionReached } from '../hooks/useScrollEffects'
 
-const ICONS = ['🤖', '🧬', '⚗️', '📊']
-const ANGLES = [-60, 60, 30, 90]
-
-// Real photography where the role has it; the diagonal pattern is the fallback.
-const asset = (file) => `${import.meta.env.BASE_URL}${file}`
-const PHOTOS = [labPhotos.gpu, labPhotos.bench, null, null]
-
 export default function Experience() {
   const { unlock } = useGame()
-  const endRef = useSectionReached(() => unlock('experience'), 0.5)
+  // Fires near the end of the timeline, so the badge means "walked the whole thing".
+  const endRef = useSectionReached(() => unlock('experience'), 0.6)
 
   return (
     <section className="section" id="experience">
-      <div className="shell" style={{ paddingBottom: '2.5rem' }}>
-        <div className="eyebrow reveal">Experience</div>
-        <div className="big reveal">Experience</div>
-        <div className="script reveal" style={{ transitionDelay: '.08s' }}>Where I&rsquo;ve built things</div>
-      </div>
+      <div className="shell">
+        <p className="eyebrow reveal">Experience</p>
+        <h2 className="h2 reveal">From the bench to program delivery.</h2>
 
-      <div className="exp-grid">
-        {experience.map((e, i) => (
-          <article
-            className="exp-card"
-            key={`${e.year}-${e.title}`}
-            ref={i === experience.length - 1 ? endRef : null}
-          >
+        <div className="timeline">
+          {experience.map((e, i) => (
             <div
-              className="exp-vis"
-              style={
-                PHOTOS[i]
-                  ? undefined
-                  : { background: `repeating-linear-gradient(${ANGLES[i % 4]}deg, #0d0d0d 0, #0d0d0d 1px, #131313 1px, #131313 30px)` }
-              }
+              className="tl-item reveal"
+              key={`${e.year}-${e.title}`}
+              ref={i === experience.length - 1 ? endRef : null}
             >
-              {PHOTOS[i] && <img className="exp-vis__img" src={asset(PHOTOS[i])} alt="" loading="lazy" />}
-              <span className="exp-vis__ico" aria-hidden="true">{ICONS[i % 4]}</span>
-              <span className="exp-vis__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <div className="tl-year">{e.year}</div>
+              <div className="tl-title">{e.title}</div>
+              <div className="tl-org">{e.org}</div>
+              <p className="tl-detail">{e.detail}</p>
             </div>
+          ))}
+        </div>
 
-            <div className="exp-body reveal">
-              <span className="exp-date">{e.year}</span>
-              <div className="exp-co">{e.title}</div>
-              <div className="exp-role">{e.org}</div>
-              <p className="exp-desc">{e.detail}</p>
-            </div>
-          </article>
-        ))}
+        <div className="chips reveal">
+          {experienceChips.map((c) => (
+            <span className="chip" key={c}>{c}</span>
+          ))}
+        </div>
       </div>
     </section>
   )

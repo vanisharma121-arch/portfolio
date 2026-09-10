@@ -26,9 +26,8 @@ export default function PlaybookHero() {
     <>
       <header className="hero hero--playbook" id="top">
         <div className="hero__inner shell">
-          <div className="eyebrow">{playbookMeta.kicker}</div>
+          <span className="hero__badge">◆ {playbookMeta.kicker}</span>
           <h1 className="hero__name hero__name--playbook">{playbookMeta.title}</h1>
-          <div className="script" style={{ marginBottom: '1.6rem' }}>Field-tested, not theorised</div>
           <p className="hero__sub">{playbookMeta.subtitle}</p>
 
           <div className="hero__cta">
