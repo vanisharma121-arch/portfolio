@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { projects } from '../data'
 import { useGame } from '../game/GameContext'
 
+const asset = (file) => `${import.meta.env.BASE_URL}${file}`
+
 export default function Projects() {
   const { unlock } = useGame()
   const [opened, setOpened] = useState([])
@@ -24,7 +26,7 @@ export default function Projects() {
     <section className="section section--dark" id="work">
       <div className="shell">
         <p className="eyebrow reveal">Selected work</p>
-        <h2 className="h2 reveal">Four projects worth opening.</h2>
+        <h2 className="h2 reveal">Two projects worth opening.</h2>
         <p className="lede reveal" style={{ marginBottom: 46 }}>
           Tap any card to read what actually happened.
         </p>
@@ -33,19 +35,35 @@ export default function Projects() {
           {projects.map((p) => {
             const isOpen = opened.includes(p.num)
             return (
-              <button
-                key={p.num}
-                className={`project reveal${isOpen ? ' is-open' : ''}`}
-                onClick={() => toggle(p.num)}
-                aria-expanded={isOpen}
-              >
-                <div className="project__top">
-                  <span className="project__num">{p.num}</span>
-                  <span className="project__open" aria-hidden="true">+</span>
-                </div>
+              // An <article> wrapper, not a <button>: projects with a live site
+              // need a real <a>, and an anchor nested inside a button is
+              // invalid HTML. The toggle is its own button alongside it.
+              <article className={`project reveal${isOpen ? ' is-open' : ''}`} key={p.num}>
+                <button
+                  className="project__head"
+                  onClick={() => toggle(p.num)}
+                  aria-expanded={isOpen}
+                >
+                  <span className="project__top">
+                    <span className="project__num">{p.num}</span>
+                    <span className="project__open" aria-hidden="true">+</span>
+                  </span>
 
-                <div className="project__name">{p.name}</div>
-                <p className="project__sub">{p.sub}</p>
+                  <span className="project__name">{p.name}</span>
+                  <span className="project__sub">{p.sub}</span>
+                </button>
+
+                {p.url && (
+                  <a
+                    className="project__link"
+                    href={p.urlInternal ? asset(p.url) : p.url}
+                    target={p.urlInternal ? undefined : '_blank'}
+                    rel={p.urlInternal ? undefined : 'noreferrer'}
+                  >
+                    {p.urlLabel ?? 'Visit site'}
+                    <span aria-hidden="true">{p.urlInternal ? ' →' : ' ↗'}</span>
+                  </a>
+                )}
 
                 <div className="project__detail">
                   <div>
@@ -57,7 +75,7 @@ export default function Projects() {
                     </div>
                   </div>
                 </div>
-              </button>
+              </article>
             )
           })}
         </div>

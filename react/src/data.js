@@ -119,35 +119,26 @@ export const experienceChips = ['Program delivery', 'ICH-GCP', 'Stakeholder alig
 export const projects = [
   {
     num: '01',
-    name: 'ICU Simulator',
-    sub: 'Sanara Healthcare partnership — EHR documentation support for clinicians.',
-    detail:
-      'Led the Sanara Healthcare partnership from relationship into technical specifications and validation criteria, aligning four stakeholder groups on scope for an ICU simulator that helps doctors with EHR documentation.',
-    tags: ['Partnership', 'Requirements', 'Healthcare AI'],
-  },
-  {
-    num: '02',
     name: 'Svastha (HealthVault)',
     sub: 'Decentralized health-data platform, selected into Harvard Innovation Labs.',
     detail:
       'Business Operations Lead for an early-stage decentralized health-data startup, earning selection into the Harvard Innovation Labs (Foundry) accelerator. Ran market and competitive analysis to size the opportunity, define target segments and shape the product roadmap.',
+    url: 'https://getsvastha.com/',
+    urlLabel: 'getsvastha.com',
     tags: ['Go-to-market', 'Strategy', 'Harvard iLab'],
   },
   {
-    num: '03',
-    name: 'Genomic Data Pipelines',
-    sub: 'Analysis-ready datasets for gene-therapy classification at Neoclease.',
+    num: '02',
+    name: 'The PM Playbook',
+    sub: 'How I run a multi-product sprint programme, written up in full.',
     detail:
-      'Built genomic data-extraction pipelines producing analysis-ready datasets for gene-therapy classification, standardising how the team handled sequencing outputs — and set the validation standards that kept AI/ML inputs at clinical-grade structure.',
-    tags: ['CRISPR', 'Data Pipelines', 'Validation'],
-  },
-  {
-    num: '04',
-    name: 'Dermatological Efficacy Studies',
-    sub: 'Three GCP-aligned studies at NIVEA, reported through Tableau.',
-    detail:
-      'Three GCP-aligned efficacy studies (n≈120) measuring TEWL, erythema and pigmentation endpoints to ICH-GCP standards, with documentation across four product development workstreams kept audit-ready from formulation through study close.',
-    tags: ['ICH-GCP', 'Clinical Studies', 'Tableau'],
+      'Six plays and five field notes drawn from running four AI products through an eight-week sprint programme at the D’Amore-McKim AI Strategic Hub — including the Press-Bot case file, where three sprints produced zero delivery and the fix was a resourcing escalation rather than a replan.',
+    // Internal page in this same build, so it resolves against BASE_URL and
+    // opens in the current tab rather than a new one.
+    url: 'playbook/',
+    urlInternal: true,
+    urlLabel: 'Read the playbook',
+    tags: ['Program Management', 'Reporting', 'Case Study'],
   },
 ]
 
