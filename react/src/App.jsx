@@ -6,6 +6,7 @@ import HowIWork from './components/HowIWork'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
+import Research from './components/Research'
 import Resume from './components/Resume'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -30,6 +31,7 @@ export default function App() {
         <Stats />
         <Experience />
         <Projects />
+        <Research />
         <Resume />
         <Skills />
         <Contact />

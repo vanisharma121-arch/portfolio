@@ -1,9 +1,13 @@
-import { experience } from '../data'
+import { experience, labPhotos } from '../data'
 import { useGame } from '../game/GameContext'
 import { useSectionReached } from '../hooks/useScrollEffects'
 
 const ICONS = ['🤖', '🧬', '⚗️', '📊']
 const ANGLES = [-60, 60, 30, 90]
+
+// Real photography where the role has it; the diagonal pattern is the fallback.
+const asset = (file) => `${import.meta.env.BASE_URL}${file}`
+const PHOTOS = [labPhotos.gpu, labPhotos.bench, null, null]
 
 export default function Experience() {
   const { unlock } = useGame()
@@ -26,10 +30,13 @@ export default function Experience() {
           >
             <div
               className="exp-vis"
-              style={{
-                background: `repeating-linear-gradient(${ANGLES[i % 4]}deg, #0d0d0d 0, #0d0d0d 1px, #131313 1px, #131313 30px)`,
-              }}
+              style={
+                PHOTOS[i]
+                  ? undefined
+                  : { background: `repeating-linear-gradient(${ANGLES[i % 4]}deg, #0d0d0d 0, #0d0d0d 1px, #131313 1px, #131313 30px)` }
+              }
             >
+              {PHOTOS[i] && <img className="exp-vis__img" src={asset(PHOTOS[i])} alt="" loading="lazy" />}
               <span className="exp-vis__ico" aria-hidden="true">{ICONS[i % 4]}</span>
               <span className="exp-vis__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             </div>
